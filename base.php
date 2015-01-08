@@ -12,6 +12,10 @@
     get_template_part('templates/header');
   ?>
 
+  <?php if(is_page_template('page-home.php')) : ?>
+	  <?php get_template_part('page-home'); ?>
+  <?php else: ?>
+
   <div class="wrap container" role="document">
     <div class="content row">
       <main class="main" role="main">
@@ -24,6 +28,8 @@
       <?php endif; ?>
     </div><!-- /.content -->
   </div><!-- /.wrap -->
+
+  <?php endif; ?>
 
   <?php get_template_part('templates/footer'); ?>
 
