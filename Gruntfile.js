@@ -39,6 +39,7 @@ module.exports = function(grunt) {
         options: {
           style: 'expanded',
           compass: true,
+          require: 'breakpoint'
         },
         files: {
           'assets/css/main.css': [
@@ -126,7 +127,8 @@ module.exports = function(grunt) {
           'assets/sass/*.scss',
           'assets/sass/**/*.scss'
         ],
-        tasks: ['sass:dev', 'autoprefixer:dev']
+        //tasks: ['sass:dev', 'autoprefixer:dev']
+        tasks: ['sass:build', 'autoprefixer:dev']
       },
       js: {
         files: [

@@ -13,3 +13,5 @@ assets/manifest.json
 .editorconfig
 .jshintrc
 lang/
+Gemfile.lock
+npm-debug.log
