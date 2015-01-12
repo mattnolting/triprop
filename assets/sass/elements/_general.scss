@@ -1,5 +1,11 @@
-// Content wrapper
+*, *:focus, *:active {}
+
 .wrap { }
+
+img {
+	max-width: 100%;
+	height: auto;
+}
 
 // Main content area
 .main {

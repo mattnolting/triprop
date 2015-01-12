@@ -1,0 +1,10 @@
+.navbar-collapse, .navbar-header {
+	position: relative;
+}
+
+.navbar-nav {
+
+	@include media-query (sm) {
+		float: right;
+	}
+}

@@ -1,11 +1,12 @@
 // Bootstrap
-@import "_bootstrap.scss";
-
+//@import "_bootstrap.scss";
+@import "compass";
+@import "breakpoint";
 
 // Roots
-@import "includes/_global.scss";              // Base styling & custom mixins
 @import "includes/_variables.scss";
 @import "includes/_functions.scss";
+@import "includes/_global.scss";              // Base styling & custom mixins
 
 
 // Elements
@@ -21,12 +22,21 @@
 @import "components/_media";         // WordPress media
 @import "components/_wp-classes";    // WordPress generated classes
 @import "components/_footer";
-@import "components/_header";
-@import "components/_media";
+@import "components/_masthead";
 @import "components/_pages";
 @import "components/_posts";
 @import "components/_sidebar";
-
+@import "components/_media";
+@import "components/_navbar";
+@import "components/_ribbons";
+@import "components/_hoverbox";
 
 // Pages
 //==================================================================*/
+@import "pages/_home";
+
+
+// Vendor
+//==================================================================*/
+@import "vendor/_owl-carousel";
+@import "vendor/_ri-grid";

@@ -1,0 +1,28 @@
+form {
+	label {
+		display: block;
+		font-family: $header_font_family;
+		@include font-size(24px);
+		font-weight: normal;
+	}
+
+	input, textarea {
+		font-family: $header_font_family;
+		width: 100%;
+		@include rem('padding', 20px);
+		@include font-size(24px);
+		line-height: 1;
+		background: #f3f0e7;
+		border: 2px solid $blue_dark;
+		@include box-shadow(none);
+	}
+
+	.form-row {
+		margin-bottom: 12px;
+	}
+
+	input[type="submit"], .submit {
+		width: auto;
+		display: inline-block;
+	}
+}

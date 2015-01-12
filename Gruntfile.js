@@ -37,12 +37,13 @@ module.exports = function(grunt) {
     sass: {
       dev: {
         options: {
-          style: 'expanded',
-          compass: true,
-          require: 'breakpoint'
+		  style: 'expanded',
+		  compass: true,
+		  require: 'breakpoint',
+		  lineNumbers: true
         },
         files: {
-          'assets/css/main.css': [
+          'assets/css/main.min.css': [
             'assets/sass/main.scss'
           ]
         }
@@ -50,7 +51,8 @@ module.exports = function(grunt) {
       build: {
         options: {
           style: 'compressed',
-          compass: true,
+		  compass: true,
+		  require: 'breakpoint'
         },
         files: {
           'assets/css/main.min.css': [
@@ -65,8 +67,8 @@ module.exports = function(grunt) {
       },
       dist: {
         src: [jsFileList],
-        dest: 'assets/js/scripts.js',
-      },
+        dest: 'assets/js/scripts.min.js',
+      }
     },
     uglify: {
       dist: {
@@ -128,7 +130,7 @@ module.exports = function(grunt) {
           'assets/sass/**/*.scss'
         ],
         //tasks: ['sass:dev', 'autoprefixer:dev']
-        tasks: ['sass:build', 'autoprefixer:dev']
+        tasks: ['sass:dev']
       },
       js: {
         files: [
@@ -141,11 +143,11 @@ module.exports = function(grunt) {
         // Browser live reloading
         // https://github.com/gruntjs/grunt-contrib-watch#live-reloading
         options: {
-          livereload: false
+          livereload: true
         },
         files: [
-          'assets/css/main.css',
-          'assets/js/scripts.js',
+          'assets/css/main.min.css',
+          'assets/js/scripts.min.js',
           'templates/*.php',
           '*.php'
         ]
@@ -161,7 +163,9 @@ module.exports = function(grunt) {
     'jshint',
     'sass:dev',
     'autoprefixer:dev',
-    'concat'
+    'uglify',
+    'concat',
+    'watch'
   ]);
   grunt.registerTask('build', [
     'jshint',

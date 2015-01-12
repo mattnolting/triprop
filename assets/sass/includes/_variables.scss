@@ -6,7 +6,6 @@ $main-sm-columns:       $grid-columns;
 $sidebar-sm-columns:    4;
 
 
-
 // Brand colors
 // -------------------------
 
@@ -34,6 +33,14 @@ $base_color: #656870;
 $base_font_family: 'Helvetica', sans-serif;
 
 
+$line-height-computed:    floor(($base_font_size * $base_line_height)) !default; // ~20px
+
+
+// Colors
+//==================================================================*/
+$blue_dark: #102c3b;
+$blue_light: #9ac0de;
+
 
 // Typography Settings
 //==================================================================*/
@@ -47,6 +54,7 @@ $header_top_margin: 5px;
 $header_bottom_margin: 20px;
 $header_text_rendering: optimizeLegibility;
 $header_font_color: #2572b8;
+$header_font_family: 'Times New Roman', Times, serif;
 
 $h1_font_size: 20px;
 $h2_font_size: 49px;

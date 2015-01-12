@@ -1,0 +1,55 @@
+.slider-wrap {
+	padding-left: 30px;
+	padding-right: 30px;
+
+	@include media-query (xs) {
+		padding-left: 80px;
+		padding-right: 80px;
+	}
+}
+
+
+.owl-buttons-circles {
+	position: absolute;
+	width: 100%;
+	left: 0;
+	top: 50%;
+	z-index: 1;
+
+	.owl-next, .owl-prev {
+		position: absolute;
+		width: 55px;
+		height: 55px;
+		padding: 0;
+		margin: 0;
+		color: $blue_dark;
+		border: 2px solid $blue_dark;
+		background: none;
+		@include border-radius(50%);
+		text-align: center;
+		@include opacity(.7);
+		@include transition(.2s);
+
+		&:hover {
+			@include opacity(1);
+			cursor: pointer;
+		}
+
+		i {
+			@include font-size(50px);
+			line-height: 1;
+		}
+	}
+
+	.owl-next {
+		right: 14px;
+
+		i { margin-left: 4px }
+	}
+
+	.owl-prev {
+		left: 14px;
+
+		i { margin-right: 4px }
+	}
+}

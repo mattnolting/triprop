@@ -1,0 +1,37 @@
+$ribbon-background-color: #d7e503;
+$ribbon-width: 15em;
+$ribbon-height: 36px;
+$ribbon-ends-width: 1.5em;
+$ribbon-ends-border-width: 0.9em;
+
+@mixin ribbon(){
+	width: $ribbon-width;
+	height: $ribbon-height;
+	position: relative;
+	background: $ribbon-background-color;
+
+	&:before, &:after{
+		position: absolute;
+//		top: $ribbon-ends-border-width;
+		top: 0;
+		border: $ribbon-ends-border-width solid $ribbon-background-color;
+		content: "";
+		z-index: -1;
+	}
+
+	&:before{
+		left: -$ribbon-ends-width;
+		border-right-width: $ribbon-ends-width;
+		border-left-color: transparent;
+	}
+
+	&:after{
+		right: -$ribbon-ends-width;
+		border-left-width: $ribbon-ends-width;
+		border-right-color: transparent;
+	}
+}
+
+h1{
+	@include ribbon;
+}

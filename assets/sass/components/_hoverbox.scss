@@ -1,0 +1,77 @@
+.hoverbox-slider {
+
+	.owl-item {
+		@media screen and (min-width: 600px) {
+			padding-right: 10px;
+			padding-left: 10px;
+		}
+	}
+}
+
+
+.hoverbox {
+	$top: 270px;
+	$top_hover: 0;
+	$hover_bg: rgba(16,44,59,.7);
+
+	position: relative;
+	overflow: hidden;
+
+	img {
+		width: 100%;
+		height: auto;
+
+		@include media-query (sm) { width: auto; }
+	}
+
+	.hover-content {
+		position: absolute;
+		bottom: 0;
+		width: 100%;
+		height: 80px;
+		@include rem('padding', 18px 30px);
+		background: $hover_bg;
+		color: #fff;
+		@include transition(.6s ease-in-out);
+
+		@include media-query (md) {
+			height: 100px;
+			@include rem('padding', 24px 30px);
+		}
+
+		&.active {
+			height: 100%;
+
+			.blurb { @include opacity(1); }
+		}
+
+		h1, h2, h3 {
+			margin: 0 0 12px;
+			line-height: 1;
+			color: #fff;
+
+			@include font-size(24px);
+
+			@include media-query (sm) {
+				@include font-size(36px);
+			}
+
+		}
+
+		.blurb {
+			@include opacity(0);
+			@include font-size(16px, 24px);
+			@include transition(.6s ease-in-out);
+		}
+	}
+
+	&:hover {
+		.hover-content {
+			height: 100%;
+		}
+		.blurb {
+			@include opacity(1);
+			@include transition-delay(.1s);
+		}
+	}
+}
