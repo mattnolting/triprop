@@ -10,7 +10,8 @@ function roots_setup() {
 	// Register wp_nav_menu() menus
 	// http://codex.wordpress.org/Function_Reference/register_nav_menus
 	register_nav_menus(array(
-		'primary_navigation' => __('Primary Navigation', 'roots')
+		'primary_navigation' => __('Primary Navigation', 'roots'),
+		'map_navigation' => __('Map Navigation', 'roots')
 	));
 
 	// Add post thumbnails
@@ -21,7 +22,7 @@ function roots_setup() {
 	add_image_size('owl_thumb-large', 570, 570, true);
 	add_image_size('owl_thumb-medium', 400, 400, true);
 	add_image_size('owl_thumb-small', 320, 320, true);
-
+	add_image_size('popup', 122, 122, true);
 
 
 	// Add post formats

@@ -1,8 +1,8 @@
-$ribbon-background-color: #d7e503;
-$ribbon-width: 15em;
-$ribbon-height: 36px;
-$ribbon-ends-width: 1.5em;
-$ribbon-ends-border-width: 0.9em;
+$ribbon-background-color: #008fc5;
+$ribbon-width: 180px;
+$ribbon-height: 66px;
+$ribbon-ends-width: 33px;
+$ribbon-ends-border-width: 33px;
 
 @mixin ribbon(){
 	width: $ribbon-width;
@@ -12,7 +12,6 @@ $ribbon-ends-border-width: 0.9em;
 
 	&:before, &:after{
 		position: absolute;
-//		top: $ribbon-ends-border-width;
 		top: 0;
 		border: $ribbon-ends-border-width solid $ribbon-background-color;
 		content: "";
@@ -30,8 +29,19 @@ $ribbon-ends-border-width: 0.9em;
 		border-left-width: $ribbon-ends-width;
 		border-right-color: transparent;
 	}
+
+	&:before, &:after {
+		display: none;
+		@include media-query (md) {
+			display: block;
+		}
+	}
 }
 
-h1{
+.ribbon {
 	@include ribbon;
+	color: #fff;
+	font-family: 'Times New Roman', Times, serif;
+	@include font-size(30px);
+	line-height: 2;
 }

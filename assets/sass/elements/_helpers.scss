@@ -1,0 +1,11 @@
+$img-margin: 30px;
+
+.alignleft {
+	float: left;
+	margin-right: $img-margin;
+}
+
+.alignright {
+	float: right;
+	margin-left: $img-margin;
+}

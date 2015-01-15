@@ -8,7 +8,6 @@
 	}
 }
 
-
 .hoverbox {
 	$top: 270px;
 	$top_hover: 0;
@@ -65,13 +64,15 @@
 		}
 	}
 
-	&:hover {
-		.hover-content {
-			height: 100%;
-		}
-		.blurb {
-			@include opacity(1);
-			@include transition-delay(.1s);
+	@include media-query (sm) {
+		&:hover {
+			.hover-content {
+				height: 100%;
+			}
+			.blurb {
+				@include opacity(1);
+				@include transition-delay(.1s);
+			}
 		}
 	}
 }

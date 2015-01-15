@@ -9,15 +9,51 @@ $header_nav_font_size: 18px;
 
 	.nav.navbar-nav {
 		li {
+			@include rem('margin', 0 4px);
+			padding: 0;
+
 			a {
+				position: relative;
 				font-family: $header_font_family;
 				font-size: $header_nav_font_size;
 				text-transform: uppercase;
 				color: #fff;
+				@include rem('padding', 14px 8px);
+
+				@include media-query (sm) {
+					@include font-size(14px);
+					line-height: 1;
+				}
+				@include media-query (md) {
+					@include font-size(16px);
+					line-height: 1;
+				}
+
+				&:active, &:focus {
+					color: #fff;
+					text-decoration: none;
+				}
 
 				&:hover {
 					color: #fff;
-					text-decoration: underline;
+					text-decoration: none;
+				}
+
+				.sep {
+					display: none;
+					position: absolute;
+					left: -8px;
+					top: 13px;
+
+					@include media-query (sm) {
+						display: block;
+					}
+				}
+			}
+
+			&:first-child {
+				.sep {
+					display: none;
 				}
 			}
 

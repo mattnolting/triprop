@@ -12,7 +12,12 @@
 		<nav class="collapse navbar-collapse" role="navigation">
 			<?php
 				if (has_nav_menu('primary_navigation')) :
-					wp_nav_menu(array('theme_location' => 'primary_navigation', 'menu_class' => 'nav navbar-nav'));
+					wp_nav_menu(
+						array(
+							'theme_location'    => 'primary_navigation',
+							'menu_class'        => 'nav navbar-nav',
+							'link_before'            => '<span class="sep">|</span>'
+						));
 				endif;
 			?>
 			<a class="brand" href="<?php echo esc_url(home_url('/')); ?>"><?php echo ot_get_option( 'logo_header' ) ? '<img src="' . ot_get_option( 'logo_header' ) . '" alt="Home" />' : bloginfo('name'); ?></a>

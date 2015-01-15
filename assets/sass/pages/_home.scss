@@ -2,7 +2,8 @@ $section_header_font_size: 42px;
 
 section.section.grid {
 	height: 300px;
-	@include media-query (sm) { height: 480px; }
+	@include media-query (xs) { height: 420px; }
+	@include media-query (sm) { height: 540px; }
 	@include media-query (md) { height: 565px; }
 
 	.section-content {
@@ -39,8 +40,14 @@ section.section {
 
 		h1, h2, h3, h4 {
 			margin: 0;
+			@include rem('padding', 20px 0);
 			color: #fff;
 			@include font-size(26px);
+			display: inline-block;
+			background-repeat: no-repeat;
+			background-position: left center;
+
+			&.with-icon { @include rem('padding-left', 80px); }
 
 			@include media-query (sm) {
 				@include font-size(42px);
@@ -80,19 +87,54 @@ section.section {
 			}
 		}
 	}
+
+	.container.desktop {
+		display: none;
+		@include media-query (sm) {
+			display: block;
+		}
+	}
+
+	.container.mobile {
+		text-align: center;
+
+		img { display: inline-block; }
+
+		@include media-query (sm) { display: none; }
+	}
+
 }
 
 .section.intro {
+	overflow: hidden;
+
+	.container {
+		position: relative;
+	}
 
 	.intro-block {
-		@include rem('margin', 80px 0 0);
+
 		text-align: center;
+
+		@include media-query (sm) { @include rem('margin', 60px 0 0); }
+		@include media-query (md) { @include rem('margin', 80px 0 0); }
 	}
 
 	.logo {
 
 		img {
 			display: inline-block;
+		}
+	}
+}
+
+.section.contact {
+
+	.section-title {
+		h2 {
+			margin: 0;
+			@include font-size(44px);
+			line-height: 1;
 		}
 	}
 }

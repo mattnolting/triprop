@@ -1,0 +1,112 @@
+.map-navigation {
+	display: none;
+	position: absolute;
+	z-index: 9999;
+	right: 10px;
+	top: 20px;
+	text-transform: uppercase;
+	background: rgba(255,255,255,.5);
+	@include box-shadow(0 2px 4px rgba(0,0,0,.3));
+
+	h1, h2, h3 {
+		color: #1d4165;
+		font-family: $map-navigation-font;
+		margin: 0;
+		@include font-size(16px);
+		font-weight: 700;
+		@include rem('padding', 10px 15px);
+	}
+
+	@include media-query (md) {
+		display: block;
+	}
+
+	li {
+		a {
+			position: relative;
+			color: #040707;
+			font-family: $map-navigation-font;
+			font-weight: 700;
+
+			@include media-query (sm) {
+				@include rem('padding', 14px 15px 14px 60px);
+			}
+
+			img {
+				position: absolute;
+				left: 6px;
+				top: 0;
+			}
+		}
+
+		@include media-query (md) {
+
+			[class^="menu-"], [class*=" menu-"] {
+				&:before {
+					content: '';
+					position: absolute;
+					left: 8px;
+					top: 0;
+					width: 44px;
+					height: 44px;
+					display: block;
+					background-repeat: no-repeat;
+					background-position: center center;
+				}
+
+			}
+
+			.menu-office, .menu-warehouse-distribution, .menu-flex-r-d, .menu-support-services {
+
+				&:before {
+					background-color: rgba(255, 255, 255, .6);
+					border: 1px solid #878683;
+					@include box-shadow(2px 0 3px rgba(0, 0, 0, .2));
+					@include border-radius(50%);
+					@include opacity(.8);
+				}
+			}
+
+			.menu-office {
+				&:before {
+					background-image: url("../img/i_office.png");
+				}
+			}
+			.menu-warehouse-distribution {
+				&:before {
+					background-image: url("../img/i_warehouse.png");
+				}
+			}
+			.menu-flex-r-d {
+				&:before {
+					background-image: url("../img/i_flex.png");
+				}
+			}
+			.menu-support-services {
+				&:before {
+					background-image: url("../img/i_support.png");
+				}
+			}
+			.menu-existing-trails {
+				&:before {
+					background-image: url("../img/i_existing-trail.png");
+				}
+			}
+			.menu-pedestrian-trails {
+				&:before {
+					background-image: url("../img/i_proposed-trail.png");
+				}
+			}
+			.menu-bus-stop {
+				&:before {
+					background-image: url("../img/i_bus-stop.png");
+				}
+			}
+			.menu-shopping-center {
+				&:before {
+					background-image: url("../img/i_shapping-center.png");
+				}
+			}
+		}
+	}
+}

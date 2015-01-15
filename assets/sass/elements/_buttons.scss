@@ -1,0 +1,29 @@
+.btn {
+	color: #fff;
+	background: $blue_dark;
+	@include border-radius(0);
+	@include transition(.2s);
+
+	&:hover {
+		background: lighten($blue_dark, 10);
+		color: #fff;
+	}
+
+	&.btn-blue {
+
+	}
+
+	&.btn-larger {
+		@include font-size(23px);
+		@include rem('padding', 16px 84px);
+	}
+}
+
+.section.contact {
+	input[type='submit'] {
+		@extend .btn;
+		@extend .btn-larger;
+		display: block;
+		margin: 0 auto;
+	}
+}

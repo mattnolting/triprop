@@ -3,3 +3,55 @@
 .hentry .byline { }
 .hentry .entry-content { }
 .hentry footer { }
+
+.thumbnail {
+	padding: 0;
+	border: none;
+	position: relative;
+
+	.caption {
+		position: absolute;
+		width: 100%;
+		background: rgba(16,44,59,.7);
+		bottom: 0;
+		color: #fff;
+		font-family: $header_font_family;
+		@include font-size(16px);
+		text-transform: uppercase;
+		@include rem('padding', 20px);
+	}
+
+	.thumbnail-full {
+
+	}
+}
+
+.inner-page-footer {
+	@include rem('margin-top', 30px);
+	@include rem('padding', 30px 0);
+	border-top: 15px solid $blue_dark;
+}
+
+.the-content {
+	h1, h2, h3, h4 {
+		margin-top: 8px;
+		margin-bottom: 20px;
+	}
+	@include font-size(16px, 20px);
+}
+
+.contact {
+	@include font-size(16px);
+	font-family: $header_font_family;
+
+	@include media-query (sm) {
+		@include font-size(26px);
+	}
+
+	.name { text-transform: uppercase; }
+
+	a {
+		color: $blue_dark;
+		text-decoration: none;
+	}
+}

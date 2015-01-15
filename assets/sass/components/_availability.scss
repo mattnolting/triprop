@@ -1,0 +1,18 @@
+.availability {
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 112px;
+	height: 111px;
+	z-index: 99;
+	text-indent: -9999em;
+	background: url('../img/bg_availability.png') no-repeat left top;
+
+	&.right {
+		left: auto;
+		right: -9px;
+		top: -9px;
+		background: url('../img/bg_availability-right.png') no-repeat left top;
+		@include transform(rotate(0));
+	}
+}

@@ -13,8 +13,19 @@ h1 {
 	line-height: 1;
 }
 
-main.main {
-
-}
+main.main {  }
 
 p { @include font-size($paragraph_font_size, $paragraph_line_height); }
+
+.sf {
+	font-family: $header_font_family;
+	@include font-size(20px);
+	line-height: 1;
+	vertical-align: baseline;
+
+	.num {
+		@include font-size(28px);
+		line-height: 1;
+//		font-weight: 700;
+	}
+}

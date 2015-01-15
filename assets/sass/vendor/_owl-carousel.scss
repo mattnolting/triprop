@@ -53,3 +53,14 @@
 		i { margin-right: 4px }
 	}
 }
+
+.owl-theme .owl-controls .owl-page {
+
+	span { background: #bccfe1; }
+
+	&.active {
+		span {
+			background: #7aa0c4;
+		}
+	}
+}

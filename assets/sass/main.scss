@@ -4,39 +4,51 @@
 @import "breakpoint";
 
 // Roots
-@import "includes/_variables.scss";
-@import "includes/_functions.scss";
-@import "includes/_global.scss";              // Base styling & custom mixins
+@import "includes/variables.scss";
+@import "includes/functions.scss";
+@import "includes/global.scss";              // Base styling & custom mixins
 
 
 // Elements
 //==================================================================*/
-@import "elements/_general";          // General styling
-@import "elements/_buttons";           // Header styling
-@import "elements/_forms";          // Sidebar styling
-@import "elements/_typography";           // Footer styling
+@import "elements/general";          // General styling
+@import "elements/buttons";           // Header styling
+@import "elements/forms";          // Sidebar styling
+@import "elements/typography";           // Footer styling
+@import "elements/helpers";
+@import "elements/fonts";
+@import "elements/lists";
 
 
 // Components
 //==================================================================*/
-@import "components/_media";         // WordPress media
-@import "components/_wp-classes";    // WordPress generated classes
-@import "components/_footer";
-@import "components/_masthead";
-@import "components/_pages";
-@import "components/_posts";
-@import "components/_sidebar";
-@import "components/_media";
-@import "components/_navbar";
-@import "components/_ribbons";
-@import "components/_hoverbox";
+@import "components/media";         // WordPress media
+@import "components/wp-classes";    // WordPress generated classes
+@import "components/footer";
+@import "components/masthead";
+@import "components/pages";
+@import "components/posts";
+@import "components/sidebar";
+@import "components/media";
+@import "components/navbar";
+@import "components/ribbons";
+@import "components/hoverbox";
+@import "components/intro-nav";
+@import "components/map";
+@import "components/map-navigation";
+@import "components/link-attraction";
+@import "components/property.box";
+@import "components/wrap.container";
+@import "components/availability";
+
 
 // Pages
 //==================================================================*/
-@import "pages/_home";
+@import "pages/home";
+@import "pages/single-properties";
 
 
 // Vendor
 //==================================================================*/
-@import "vendor/_owl-carousel";
-@import "vendor/_ri-grid";
+@import "vendor/owl-carousel";
+@import "vendor/ri-grid";

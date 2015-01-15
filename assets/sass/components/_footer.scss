@@ -1,1 +1,31 @@
-.content-info { }
+.content-info {
+	@include rem('padding', 60px 0);
+	background: $blue_dark;
+	color: #fff;
+	font-family: $header_font_family;
+
+	.logo {
+		text-align: center;
+		margin-bottom: 20px;
+
+		@include media-query (sm) { margin-bottom: 0; }
+	}
+
+	.logo-left {
+		text-align: center;
+		margin-bottom: 20px;
+
+		@include media-query (sm) {
+			text-align: left;
+			margin-bottom: 0;
+		}
+	}
+
+	.address {
+		text-align: center;
+
+		@include media-query (sm) {
+			text-align: right;
+		}
+	}
+}

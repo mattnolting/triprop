@@ -5,6 +5,8 @@
 .navbar-nav {
 
 	@include media-query (sm) {
+		padding-left: 96px;
 		float: right;
 	}
 }
+

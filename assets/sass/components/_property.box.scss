@@ -1,0 +1,62 @@
+.box.property {
+	font-family: $header_font_family;
+
+
+	h3 {
+		@include rem('margin', 4px 0 14px);
+		@include font-size(36px);
+		line-height: 1;
+//		font-weight: bold;
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
+	}
+
+	header {
+		@include rem('margin-bottom', 15px);
+		@include rem('padding', 0 10px);
+
+		[class^="col-"], [class*="col-"] {
+		}
+
+		.btn {
+
+			@include media-query (sm) {
+				float: right;
+				margin-top: 30px;
+			}
+		}
+	}
+
+	picture {
+		position: relative;
+		display: block;
+
+		&.pad {
+			@include rem('padding', 10px);
+		}
+	}
+
+	figcaption {
+		display: block;
+		@include rem('padding', 4px 12px);
+		text-align: center;
+		background: $blue_dark;
+		color: #fff;
+		font-family: $header_font_family;
+		@include font-size(30px);
+		font-weight: 700;
+
+		&.title {
+
+		}
+	}
+
+	img {
+		width: 100%;
+		height: auto;
+
+		@include media-query (sm) { width: auto; }
+	}
+}
+

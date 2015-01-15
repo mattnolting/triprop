@@ -1,5 +1,10 @@
-*, *:focus, *:active {}
-
+*, *:focus, *:active {
+	@inlude box-shadow(none);
+	outline: none;
+}
+.container {
+	max-width: 1020px;
+}
 .wrap { }
 
 img {

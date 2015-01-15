@@ -57,7 +57,8 @@ function roots_display_sidebar() {
      */
     array(
       'template-custom.php',
-	  'page-home.php'
+	  'page-home.php',
+      '404.php'
     )
   );
 
