@@ -72,19 +72,21 @@ Template Name: Page Home
 				<?php endif; ?>
 			</div>
 			<div class="section-content">
-				<div class="slider-wrap">
-					<div id="about-slider" class="owl-carousel">
-						<?php
+				<div class="container">
+					<div class="slider-wrap">
+						<div id="about-slider" class="owl-carousel">
+							<?php
 							$field_values = simple_fields_values("homepage_about_entry");
 
 							if($field_values) :
-						?>
-							<?php foreach($field_values as $val) : ?>
+								?>
+								<?php foreach($field_values as $val) : ?>
 								<div class="box">
 									<?php echo $val; ?>
 								</div>
 							<?php endforeach; ?>
-						<?php endif; ?>
+							<?php endif; ?>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -101,47 +103,49 @@ Template Name: Page Home
 				</div>
 			</div>
 			<div class="section-content">
-				<div class="slider-wrap hoverbox-slider-wrap">
-					<div class="owl-buttons owl-buttons-circles">
-						<div id="prev-amenity" class="owl-prev">
-							<i class="fa fa-angle-left"></i>
-						</div>
-						<div id="next-amenity" class="owl-next disabled">
-							<i class="fa fa-angle-right"></i>
-						</div>
-					</div>
-					<div id="amenities-slider" class="owl-carousel hoverbox-slider">
-						<?php
-							$amenities = new WP_Query( array( 'post_type' => 'amenities', 'posts_per_page' => -1 ));
-
-							if( $amenities->have_posts() ) : while ( $amenities->have_posts() ) : $amenities->the_post();
-							$blurb		= types_render_field("amenities_blurb", array("raw"=>true));
-						?>
-
-							<div class="amenity box hoverbox">
-								<?php if ( has_post_thumbnail() ) : ?>
-									<?php
-									$post_thumbnail_id = get_post_thumbnail_id( $post_id );
-
-									$thumb_large = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), 'owl_thumb-large' )[0];
-									$thumb_medium = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), 'owl_thumb-medium' )[0];
-									$thumb_small = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), 'owl_thumb-small' )[0];
-									?>
-									<picture>
-										<img
-											srcset="<?php echo $thumb_large; ?>  1170w,
-		                                        <?php echo $thumb_medium; ?>  960w,
-										        <?php echo $thumb_small; ?>   480w"
-											src="<?php echo $thumb_small; ?>"
-											alt="Detail of the above quilt, highlighting the embroidery and exotic stitchwork." />
-									</picture>
-								<?php endif; ?>
-								<div class="hover-content">
-									<h3><?php the_title(); ?></h3>
-									<?php echo $blurb ? '<div class="blurb">' . $blurb . '</div>' : null; ?>
-								</div>
+				<div class="container">
+					<div class="slider-wrap hoverbox-slider-wrap">
+						<div class="owl-buttons owl-buttons-circles">
+							<div id="prev-amenity" class="owl-prev">
+								<i class="fa fa-angle-left"></i>
 							</div>
-						<?php endwhile; endif; wp_reset_query(); ?>
+							<div id="next-amenity" class="owl-next disabled">
+								<i class="fa fa-angle-right"></i>
+							</div>
+						</div>
+						<div id="amenities-slider" class="owl-carousel hoverbox-slider">
+							<?php
+								$amenities = new WP_Query( array( 'post_type' => 'amenities', 'posts_per_page' => -1 ));
+
+								if( $amenities->have_posts() ) : while ( $amenities->have_posts() ) : $amenities->the_post();
+								$blurb		= types_render_field("amenities_blurb", array("raw"=>true));
+							?>
+
+								<div class="amenity box hoverbox">
+									<?php if ( has_post_thumbnail() ) : ?>
+										<?php
+										$post_thumbnail_id = get_post_thumbnail_id( $post_id );
+
+										$thumb_large = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), 'owl_thumb-large' )[0];
+										$thumb_medium = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), 'owl_thumb-medium' )[0];
+										$thumb_small = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), 'owl_thumb-small' )[0];
+										?>
+										<picture>
+											<img
+												srcset="<?php echo $thumb_large; ?>  1170w,
+			                                        <?php echo $thumb_medium; ?>  960w,
+											        <?php echo $thumb_small; ?>   480w"
+												src="<?php echo $thumb_small; ?>"
+												alt="Detail of the above quilt, highlighting the embroidery and exotic stitchwork." />
+										</picture>
+									<?php endif; ?>
+									<div class="hover-content">
+										<h3><?php the_title(); ?></h3>
+										<?php echo $blurb ? '<div class="blurb">' . $blurb . '</div>' : null; ?>
+									</div>
+								</div>
+							<?php endwhile; endif; wp_reset_query(); ?>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -220,61 +224,63 @@ Template Name: Page Home
 				</div>
 			</div>
 			<div class="section-content">
-				<div class="slider-wrap">
-					<div class="owl-buttons owl-buttons-circles">
-						<div id="prev-property" class="owl-prev">
-							<i class="fa fa-angle-left"></i>
-						</div>
-						<div id="next-property" class="owl-next disabled">
-							<i class="fa fa-angle-right"></i>
-						</div>
-					</div>
-					<div id="properties-slider" class="owl-carousel hoverbox-slider">
-						<?php
-						$properties = new WP_Query( array( 'post_type' => 'properties', 'posts_per_page' => -1 ));
-
-						if( $properties->have_posts() ) : while ( $properties->have_posts() ) : $properties->the_post();
-							$blurb		= types_render_field("amenities_blurb", array("raw"=>true));
-							$sqfootage	= types_render_field("property_square_footage", array("raw"=>true));
-
-							?>
-
-							<div class="property box">
-								<header class="row header">
-									<div class="col-sm-8">
-										<div class="sf"><span class="num"><?php echo $sqfootage; ?></span>&nbsp;<span>SF</span></div>
-										<h3><?php the_title(); ?></h3>
-									</div>
-									<div class="col-sm-4">
-										<a href="<?php the_permalink(); ?>" class="btn btn-blue">Learn More</a>
-									</div>
-								</header>
-								<?php $property_availability		= types_render_field("property_availability", array("raw"=>true)); ?>
-
-								<?php if ( has_post_thumbnail() ) : ?>
-									<?php
-									$post_thumbnail_id = get_post_thumbnail_id( $post_id );
-
-									$thumb_large = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), 'owl_thumb-large' )[0];
-									$thumb_medium = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), 'owl_thumb-medium' )[0];
-									$thumb_small = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), 'owl_thumb-small' )[0];
-									?>
-									<picture class="pad">
-										<a href="<?php the_permalink(); ?>">
-										<?php if($property_availability) {
-											echo '<div class="availability">This property is available</div>';
-										} ?>
-										<img
-											srcset="<?php echo $thumb_large; ?>  1170w,
-		                                        <?php echo $thumb_medium; ?>  960w,
-										        <?php echo $thumb_small; ?>   480w"
-											src="<?php echo $thumb_small; ?>"
-											alt="Detail of the above quilt, highlighting the embroidery and exotic stitchwork." />
-										</a>
-									</picture>
-								<?php endif; ?>
+				<div class="container">
+					<div class="slider-wrap">
+						<div class="owl-buttons owl-buttons-circles">
+							<div id="prev-property" class="owl-prev">
+								<i class="fa fa-angle-left"></i>
 							</div>
-						<?php endwhile; endif; wp_reset_query(); ?>
+							<div id="next-property" class="owl-next disabled">
+								<i class="fa fa-angle-right"></i>
+							</div>
+						</div>
+						<div id="properties-slider" class="owl-carousel hoverbox-slider">
+							<?php
+							$properties = new WP_Query( array( 'post_type' => 'properties', 'posts_per_page' => -1 ));
+
+							if( $properties->have_posts() ) : while ( $properties->have_posts() ) : $properties->the_post();
+								$blurb		= types_render_field("amenities_blurb", array("raw"=>true));
+								$sqfootage	= types_render_field("property_square_footage", array("raw"=>true));
+
+								?>
+
+								<div class="property box">
+									<header class="row header">
+										<div class="col-sm-8">
+											<div class="sf"><span class="num"><?php echo $sqfootage; ?></span>&nbsp;<span>SF</span></div>
+											<h3><?php the_title(); ?></h3>
+										</div>
+										<div class="col-sm-4">
+											<a href="<?php the_permalink(); ?>" class="btn btn-blue">Learn More</a>
+										</div>
+									</header>
+									<?php $property_availability		= types_render_field("property_availability", array("raw"=>true)); ?>
+
+									<?php if ( has_post_thumbnail() ) : ?>
+										<?php
+										$post_thumbnail_id = get_post_thumbnail_id( $post_id );
+
+										$thumb_large = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), 'owl_thumb-large' )[0];
+										$thumb_medium = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), 'owl_thumb-medium' )[0];
+										$thumb_small = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), 'owl_thumb-small' )[0];
+										?>
+										<picture class="pad">
+											<a href="<?php the_permalink(); ?>">
+											<?php if($property_availability) {
+												echo '<div class="availability">This property is available</div>';
+											} ?>
+											<img
+												srcset="<?php echo $thumb_large; ?>  1170w,
+			                                        <?php echo $thumb_medium; ?>  960w,
+											        <?php echo $thumb_small; ?>   480w"
+												src="<?php echo $thumb_small; ?>"
+												alt="Detail of the above quilt, highlighting the embroidery and exotic stitchwork." />
+											</a>
+										</picture>
+									<?php endif; ?>
+								</div>
+							<?php endwhile; endif; wp_reset_query(); ?>
+						</div>
 					</div>
 				</div>
 			</div>
