@@ -32,6 +32,7 @@
 		background: $hover_bg;
 		color: #fff;
 		@include transition(.6s ease-in-out);
+		overflow-y: auto;
 
 		@include media-query (md) {
 			height: 100px;
@@ -46,13 +47,14 @@
 
 		h1, h2, h3 {
 			margin: 0 0 12px;
-			line-height: 1;
 			color: #fff;
 
 			@include font-size(24px);
+			line-height: 1;
 
 			@include media-query (sm) {
 				@include font-size(36px);
+				line-height: 1;
 			}
 
 		}

@@ -73,20 +73,22 @@ Template Name: Page Home
 			</div>
 			<div class="section-content">
 				<div class="container">
-					<div class="slider-wrap">
-						<div id="about-slider" class="owl-carousel">
-							<?php
-							$field_values = simple_fields_values("homepage_about_entry");
+					<div id="about-slider" class="owl-carousel">
+						<?php
+						$field_values = simple_fields_fieldgroup("homepage_about_entries");
 
-							if($field_values) :
-								?>
-								<?php foreach($field_values as $val) : ?>
-								<div class="box">
-									<?php echo $val; ?>
+						if($field_values) :
+							?>
+							<?php foreach($field_values as $val) : ?>
+
+							<div class="box">
+								<div class="row">
+									<div class="col-sm-6"><?php echo do_shortcode($val['homepage_about_entry']); ?></div>
+									<div class="col-sm-6"><?php echo do_shortcode($val['homepage_about_entry2']); ?></div>
 								</div>
-							<?php endforeach; ?>
-							<?php endif; ?>
-						</div>
+							</div>
+						<?php endforeach; ?>
+						<?php endif; ?>
 					</div>
 				</div>
 			</div>
@@ -103,7 +105,7 @@ Template Name: Page Home
 				</div>
 			</div>
 			<div class="section-content">
-				<div class="container">
+				<div class="container container-slider">
 					<div class="slider-wrap hoverbox-slider-wrap">
 						<div class="owl-buttons owl-buttons-circles">
 							<div id="prev-amenity" class="owl-prev">
@@ -113,7 +115,7 @@ Template Name: Page Home
 								<i class="fa fa-angle-right"></i>
 							</div>
 						</div>
-						<div id="amenities-slider" class="owl-carousel hoverbox-slider">
+						<div id="amenities-slider" class="owl-carousel owl-carousel-pad hoverbox-slider">
 							<?php
 								$amenities = new WP_Query( array( 'post_type' => 'amenities', 'posts_per_page' => -1 ));
 
@@ -168,6 +170,7 @@ Template Name: Page Home
 				<div class="container desktop">
 					<?php echo types_render_field("desktop-image", array("html"=>true)); ?>
 					<div class="map-container">
+						<i id="compass" class="fa fa-compass"></i>
 						<?php
 						if (has_nav_menu('map_navigation')) : ?>
 							<aside id="map-navigation" class="side-nav map-navigation">
@@ -224,7 +227,7 @@ Template Name: Page Home
 				</div>
 			</div>
 			<div class="section-content">
-				<div class="container">
+				<div class="container container-slider">
 					<div class="slider-wrap">
 						<div class="owl-buttons owl-buttons-circles">
 							<div id="prev-property" class="owl-prev">

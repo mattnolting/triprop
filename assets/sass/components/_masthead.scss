@@ -7,6 +7,10 @@ $header_nav_font_size: 18px;
 
 	@include media-query (sm) { margin-bottom: 0; }
 
+	.container {
+		width: auto;
+	}
+
 	.nav.navbar-nav {
 		li {
 			@include rem('margin', 0 4px);
@@ -23,10 +27,12 @@ $header_nav_font_size: 18px;
 				@include media-query (sm) {
 					@include font-size(14px);
 					line-height: 1;
+					@include rem('padding', 14px 4px);
 				}
 				@include media-query (md) {
 					@include font-size(16px);
 					line-height: 1;
+					@include rem('padding', 14px 8px);
 				}
 
 				&:active, &:focus {
@@ -45,7 +51,7 @@ $header_nav_font_size: 18px;
 					left: -8px;
 					top: 13px;
 
-					@include media-query (sm) {
+					@include media-query (md) {
 						display: block;
 					}
 				}

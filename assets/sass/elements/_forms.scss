@@ -2,14 +2,14 @@ form {
 	label {
 		display: block;
 		font-family: $header_font_family;
-		@include font-size(24px);
+		@include font-size(18px);
 		font-weight: normal;
 	}
 
 	input, textarea {
 		font-family: $header_font_family;
 		width: 100%;
-		@include rem('padding', 20px);
+		@include rem('padding', 10px);
 		@include font-size(24px);
 		line-height: 1;
 		background: #f3f0e7;
@@ -18,7 +18,7 @@ form {
 	}
 
 	.form-row {
-		margin-bottom: 22px;
+		margin-bottom: 12px;
 	}
 
 	input[type="submit"], .submit {

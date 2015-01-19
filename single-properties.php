@@ -3,7 +3,6 @@
 		$addy		            = types_render_field("property_address", array("raw"=>true));
 		$availability		    = types_render_field("property_availability", array("raw"=>true));
 		$square_footage	    	= types_render_field("property_square_footage", array("raw"=>true));
-		$details		        = types_render_field("property_details", array("raw"=>true));
 		$toggle		            = types_render_field("property_toggle", array("raw"=>true));
 	?>
 
@@ -30,34 +29,41 @@
 		echo '</div>';
 	} ?>
 	<div class="row">
+		<?php $slider_images = simple_fields_fieldgroup("slider_images"); ?>
+
+		<?php if($slider_images) : ?>
 		<div class="col-sm-6">
-			<?php $slider_images = simple_fields_fieldgroup("slider_images"); ?>
-
-			<?php if($slider_images) : ?>
-				<div id="properties-single-slider" class="owl-carousel">
-				<?php foreach($slider_images as $img) : ?>
-					<div class="property box">
-						<?php
-							$image = $img['property_slider_image']['image']['full'];
-							$title = $img['property_slider_title'];
-						?>
-						<?php if($title) : ?>
-							<figcaption class="title property-title"><?php echo $title; ?></figcaption>
-						<?php endif; ?>
-						<picture>
-							<?php echo $image; ?>
-						</picture>
-					</div>
-				<?php endforeach; ?>
+			<div id="properties-single-slider" class="owl-carousel">
+			<?php foreach($slider_images as $img) : ?>
+				<div class="property box">
+					<?php
+						$image = $img['property_slider_image']['image']['full'];
+						$title = $img['property_slider_title'];
+					?>
+					<?php if($title) : ?>
+						<figcaption class="title property-title"><?php echo $title; ?></figcaption>
+					<?php endif; ?>
+					<picture>
+						<?php echo $image; ?>
+					</picture>
 				</div>
-			<?php endif; ?>
+			<?php endforeach; ?>
+			</div>
 		</div>
-
 		<div class="col-sm-6">
 			<div class="the-content">
 				<?php the_content(); ?>
 			</div>
 		</div>
+		<?php else: ?>
+
+		<div class="col-sm-12 col-md-8 col-md-offset-2">
+			<div class="the-content">
+				<?php the_content(); ?>
+			</div>
+		</div>
+
+		<?php endif; ?>
 	</div>
 
 	<footer class="inner-page-footer">

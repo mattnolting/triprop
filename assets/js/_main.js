@@ -28,39 +28,49 @@ var Roots = {
 	// Home page
 	home: {
 		init: function() {
+			$('#compass').click(function(){
+				$('#map-navigation').fadeToggle();
+			});
 
-			$( '#ri-grid' ).gridrotator( {
-				rows    : 1,
-				columns : 4,
-				w240 : {
+			function initGridrotator() {
+				$( '#ri-grid' ).gridrotator( {
 					rows    : 1,
-					columns : 1
-				},
-				w320 : {
-					rows    : 1,
-					columns : 1
-				},
-				w480 : {
-					rows    : 1,
-					columns : 1
-				},
-				w600 : {
-					rows    : 1,
-					columns : 2
-				},
-				w768 : {
-					rows    : 1,
-					columns : 4
-				},
-				w1024 : {
-					rows    : 1,
-					columns : 4
-				},
-				step: 4,
-				animType: 'fadeInOut',
-				animSpeed: 500,
-				interval: 3000
-			} );
+					columns : 4,
+					w240 : {
+						rows    : 1,
+						columns : 1
+					},
+					w320 : {
+						rows    : 1,
+						columns : 1
+					},
+					w480 : {
+						rows    : 1,
+						columns : 1
+					},
+					w600 : {
+						rows    : 1,
+						columns : 2
+					},
+					w768 : {
+						rows    : 1,
+						columns : 4
+					},
+					w1024 : {
+						rows    : 1,
+						columns : 4
+					},
+					step: 4,
+					animType: 'fadeInOut',
+					animSpeed: 500,
+					interval: 3000
+
+				});
+			}
+
+			initGridrotator();
+
+
 
 			// About slider
 			var owlAbout = $("#about-slider");
@@ -129,6 +139,14 @@ var Roots = {
 					target = $(this).attr('class');
 					$('.item-attraction').not(target).removeClass('hover');
 					$('.item-attraction[ data-target=' + target + ']' ).addClass('hover');
+				});
+
+				$('html').click(function() {
+					$('.item-attraction').removeClass('hover');
+				});
+
+				$('#map-navigation, #compass').click(function(event){
+					event.stopPropagation();
 				});
 
 				link.mouseout(function(){
@@ -229,4 +247,5 @@ $(window).load( function() {
 			}
 		});
 	});
+	$('#ri-grid ul').fadeIn(1200);
 });

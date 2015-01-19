@@ -23,9 +23,26 @@
 
 	.address {
 		text-align: center;
+		margin-top: 40px;
+
+		@include font-size(13px);
 
 		@include media-query (sm) {
+			margin-top: 0;
 			text-align: right;
+			@include font-size(14px);
+		}
+
+		@include media-query (md) {
+			@include font-size(16px);
+		}
+
+		p {
+			margin-bottom: 4px;
+
+			@include media-query (sm) {
+				margin-bottom: 8px;
+			}
 		}
 	}
 }

@@ -26,6 +26,17 @@ section.section.blue {
 	background: $blue_light;
 }
 
+section.section.about {
+	img {
+		margin: 0 auto 40px;
+		display: block;
+
+		@include media-query (sm) {
+			margin: auto
+		}
+	}
+}
+
 section.section {
 	position: relative;
 
@@ -55,6 +66,8 @@ section.section {
 
 			&.dark {
 				color: $blue_dark;
+				margin: 0;
+				padding: 0;
 			}
 		}
 
@@ -113,7 +126,6 @@ section.section {
 	}
 
 	.intro-block {
-
 		text-align: center;
 
 		@include media-query (sm) { @include rem('margin', 60px 0 0); }
@@ -121,6 +133,12 @@ section.section {
 	}
 
 	.logo {
+		@include rem('width', 120px);
+		margin: 0 auto;
+
+		@include media-query (sm) {
+			width: auto;
+		}
 
 		img {
 			display: inline-block;
@@ -136,5 +154,9 @@ section.section {
 			@include font-size(44px);
 			line-height: 1;
 		}
+	}
+
+	textarea {
+		height: 140px;
 	}
 }
