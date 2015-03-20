@@ -1,0 +1,56 @@
+.filters {
+
+}
+
+.filters.filters-property {
+	@include rem('margin-bottom', 20px);
+	@include rem('padding', 0 12px);
+
+	@include media-query (sm) { @include rem('padding', 0 20px); }
+
+	button {
+		width: 100%;
+		@include rem('padding', 12px 6px);
+		position: relative;
+		color: #fff;
+		text-align: center;
+		background-color: #9ac0de;
+		@include box-shadow(none);
+		border: none;
+		font-family: $header_font_family;
+		@include font-size(16px);
+		line-height: 1;
+
+		&.tail-left:before, &.tail-right:after {
+			content: '';
+			position: absolute;
+			height: 100%;
+			width: 20px;
+			top: 0;
+			background-color: #9ac0de;
+			@include transform(skew(-8deg));
+			display: none;
+
+			@include media-query (sm) {
+				display: block;
+			}
+		}
+
+		&.tail-right:after {
+			right: -3px;
+		}
+
+		&.tail-left:before {
+			width: 26px;
+			left: -22px;
+		}
+
+		&.active {
+			background-color: #008fc5;
+
+			&.tail-left:before, &.tail-right:after {
+				background-color: #008fc5;
+			}
+		}
+	}
+}
