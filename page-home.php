@@ -17,7 +17,7 @@ Template Name: Page Home
 			<div class="section-content">
 				<div class="container">
 					<div class="intro-block">
-						<div class="logo"><?php echo types_render_field("home_intro-logo", array("html"=>true)); ?></div>
+						<div class="logo"><img src="<?php echo ot_get_option( 'home_intro_logo' ); ?>" alt="Imperial Center" /></div>
 						<div class="intro-nav">
 							<a href="#properties" class="ribbon-link">
 								<span class="icon icon-building"></span>
@@ -107,7 +107,7 @@ Template Name: Page Home
 			<div class="section-content">
 				<div class="container container-slider">
 					<div class="slider-wrap hoverbox-slider-wrap">
-						<div class="owl-buttons owl-buttons-circles">
+						<div class="owl-buttons-circles">
 							<div id="prev-amenity" class="owl-prev">
 								<i class="fa fa-angle-left"></i>
 							</div>
@@ -229,15 +229,15 @@ Template Name: Page Home
 			<div class="section-content">
 				<div class="container container-slider">
 					<div class="slider-wrap">
-						<div class="owl-buttons owl-buttons-circles">
-							<div id="prev-property" class="owl-prev">
-								<i class="fa fa-angle-left"></i>
+						<div class="row filters filters-property">
+							<div id="properties-all" class="col-sm-6">
+								<button class="tail-right active">View All Buildings</button>
 							</div>
-							<div id="next-property" class="owl-next disabled">
-								<i class="fa fa-angle-right"></i>
+							<div id="properties-available" class="col-sm-6">
+								<button class="tail-left">View Available Buildings</button>
 							</div>
 						</div>
-						<div id="properties-slider" class="owl-carousel hoverbox-slider">
+						<div id="properties-slider" class="owl-carousel hoverbox-slider properties-slider">
 							<?php
 							$properties = new WP_Query( array( 'post_type' => 'properties', 'posts_per_page' => -1 ));
 
@@ -284,30 +284,76 @@ Template Name: Page Home
 								</div>
 							<?php endwhile; endif; wp_reset_query(); ?>
 						</div>
+						<div id="available-properties-slider" class="owl-carousel hoverbox-slider available-properties-slider">
+							<?php
+							$properties = new WP_Query( array( 'post_type' => 'properties', 'posts_per_page' => -1 ));
+							$propertiesAvailable = new WP_Query(array('post_type' => 'properties', 'meta_key' => 'wpcf-property_availability', 'meta_value' => 1));
+
+							if( $propertiesAvailable->have_posts() ) : while ( $propertiesAvailable->have_posts() ) : $propertiesAvailable->the_post();
+								$blurb		= types_render_field("amenities_blurb", array("raw"=>true));
+								$sqfootage	= types_render_field("property_square_footage", array("raw"=>true));
+
+								?>
+
+								<div class="property box">
+									<header class="row header">
+										<div class="col-sm-8">
+											<div class="sf"><span class="num"><?php echo $sqfootage; ?></span>&nbsp;<span>SF</span></div>
+											<h3><?php the_title(); ?></h3>
+										</div>
+										<div class="col-sm-4">
+											<a href="<?php the_permalink(); ?>" class="btn btn-blue">Learn More</a>
+										</div>
+									</header>
+									<?php $property_availability		= types_render_field("property_availability", array("raw"=>true)); ?>
+
+									<?php if ( has_post_thumbnail() ) : ?>
+										<?php
+										$post_thumbnail_id = get_post_thumbnail_id( $post_id );
+
+										$thumb_large = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), 'owl_thumb-large' )[0];
+										$thumb_medium = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), 'owl_thumb-medium' )[0];
+										$thumb_small = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), 'owl_thumb-small' )[0];
+										?>
+										<picture class="pad">
+											<a href="<?php the_permalink(); ?>">
+												<?php if($property_availability) {
+													echo '<div class="availability">This property is available</div>';
+												} ?>
+												<img
+													srcset="<?php echo $thumb_large; ?>  1170w,
+			                                        <?php echo $thumb_medium; ?>  960w,
+											        <?php echo $thumb_small; ?>   480w"
+													src="<?php echo $thumb_small; ?>"
+													alt="Detail of the above quilt, highlighting the embroidery and exotic stitchwork." />
+											</a>
+										</picture>
+									<?php endif; ?>
+								</div>
+							<?php endwhile; endif; wp_reset_query(); ?>
+						</div>
 					</div>
 				</div>
 			</div>
 		</section>
 
 		<section id="contact" class="contact section blue">
-			<div class="section-title blue small">
-				<div class="container">
-					<h2 class="dark">Contact Us</h2>
-				</div>
-			</div>
 			<div class="section-content small">
 				<div class="container">
 					<div class="row">
-						<div class="col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2"><?php echo do_shortcode(simple_fields_value("contact_us")); ?></div>
+						<div class="col-sm-6 col-md-4">
+							<?php echo do_shortcode(simple_fields_value("contact_us")); ?></div>
+						<div class="hidden-xs hidden-sm col-md-4 center" style="margin-top: -20px;">
+							<div class="logo-large">
+								<img src="<?php echo get_stylesheet_directory_uri() . '/assets/img/l_large.png'; ?>" alt=""/>
+							</div>
+						</div>
+						<div class="col-sm-6 col-md-4 contact-info">
+							<?php echo simple_fields_value("contact_us_info"); ?>
+						</div>
 					</div>
 				</div>
 			</div>
 		</section>
-
-		<?php while (have_posts()) : the_post(); ?>
-			<?php //get_template_part('templates/page', 'header'); ?>
-
-			<?php //get_template_part('templates/content', 'page'); ?>
-		<?php endwhile; ?>
 	</main><!-- /.main -->
 </div><!-- /.wrap -->

@@ -7,14 +7,29 @@
 	?>
 
 	<header class="properties-header">
-		<h1 class="entry-title">
-			<?php the_title(); ?>
-			<span class="sep">|</span>
+		<div class="row">
+			<div class="col-sm-8">
+				<h1 class="entry-title">
+					<?php the_title(); ?>
+					<span class="sep">|</span>
 			<span class="sf">
 				<span class="num"><?php echo $square_footage; ?>&nbsp;</span>SF
 			</span>
-		</h1>
-		<div class="addy"><?php echo $addy; ?></div>
+				</h1>
+				<div class="addy"><?php echo $addy; ?></div>
+			</div>
+			<div class="col-sm-4">
+				<?php
+					$pdf = types_render_field("download_pdf", array("raw"=>true));
+
+					if($pdf) {
+						echo '<a class="btn" target="_blank" href="' . $pdf . '">Download PDF</a>';
+					}
+
+				?>
+
+				</div>
+		</div>
 	</header>
 	<?php
 		$caption =  get_post(get_post_thumbnail_id())->post_excerpt;

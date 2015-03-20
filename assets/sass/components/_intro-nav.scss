@@ -17,11 +17,11 @@ $ribbon_blue_border: rgba(76, 154, 198, .6);
 	$right_sm: $left_sm;
 	$right_md: $left_md;
 	$right_lg: $left_lg;
-	$top_xs: 20px;
-	$top_sm: 80px;
+	$top_xs: 60px;
+	$top_sm: 120px;
 	$top_md: 100px;
 	$top_lg: 220px;
-	$top2_xs: 200px;
+	$top2_xs: 240px;
 	$top2_sm: 280px;
 	$top2_md: 300px;
 	$top2_lg: 400px;
@@ -57,7 +57,7 @@ $ribbon_blue_border: rgba(76, 154, 198, .6);
 		}
 
 		&:nth-child(3) {
-			top: 300px;
+			top: 390px;
 			left: 50%;
 			margin-left: -50px;
 			@include media-query (sm) { top: 380px; }
@@ -115,7 +115,7 @@ $ribbon_blue_border: rgba(76, 154, 198, .6);
 			width: 100px;
 			height: 100px;
 			display: block;
-			background-color: rgba(255,255,255,.6);
+			background-color: #fff;
 			background-position: center center;
 			background-repeat: no-repeat;
 

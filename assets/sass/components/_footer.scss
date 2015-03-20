@@ -8,7 +8,14 @@
 		text-align: center;
 		margin-bottom: 20px;
 
-		@include media-query (sm) { margin-bottom: 0; }
+		@include media-query (sm) {
+			text-align: right;
+			margin-bottom: 0;
+
+			img {
+				margin-top: -60px;
+			}
+		}
 	}
 
 	.logo-left {
@@ -29,7 +36,7 @@
 
 		@include media-query (sm) {
 			margin-top: 0;
-			text-align: right;
+//			text-align: right;
 			@include font-size(14px);
 		}
 
@@ -42,6 +49,38 @@
 
 			@include media-query (sm) {
 				margin-bottom: 8px;
+			}
+		}
+	}
+
+	p {
+		@include rem('margin-bottom', 32px);
+	}
+
+	.section-title {
+		@include font-size(24px);
+		line-height: 1;
+		@include rem('padding-bottom', 34px);
+		@include rem('margin-bottom', 34px);
+		border-bottom: 1px solid #fff;
+		text-transform: uppercase;
+	}
+
+	a {
+		color: #fff;
+	}
+
+	ul {
+		margin: 0;
+		padding: 0;
+		list-style-type: none;
+
+		li {
+			padding: 0;
+			margin-bottom: 24px;
+
+			a {
+				text-decoration: underline;
 			}
 		}
 	}

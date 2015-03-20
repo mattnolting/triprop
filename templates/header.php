@@ -1,4 +1,7 @@
 <header class="masthead navbar navbar-default navbar-static-top" role="banner">
+	<?php if(ot_get_option( 'slugline' )): ?>
+	<div class="slugline"><?php echo ot_get_option( 'slugline' ); ?></div>
+	<?php endif; ?>
 	<div class="container">
 		<div class="navbar-header">
 			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">

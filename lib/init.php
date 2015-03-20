@@ -24,7 +24,9 @@ function roots_setup() {
 	add_image_size('owl_thumb-small', 320, 320, true);
 	add_image_size('popup', 122, 122, true);
 
-
+	@ini_set( 'upload_max_size' , '64M' );
+	@ini_set( 'post_max_size', '64M');
+	@ini_set( 'max_execution_time', '300' );
 	// Add post formats
 	// http://codex.wordpress.org/Post_Formats
 	add_theme_support('post-formats', array('aside', 'gallery', 'link', 'image', 'quote', 'video', 'audio'));

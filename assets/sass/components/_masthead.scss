@@ -7,6 +7,26 @@ $header_nav_font_size: 18px;
 
 	@include media-query (sm) { margin-bottom: 0; }
 
+	.slugline {
+		display: none;
+		position: absolute;
+		width: 100%;
+		font-family: $header_font_family;
+		@include rem('padding', 8px 0);
+		border-bottom: 1px solid #fff;
+		text-align: center;
+		color: #fff;
+
+		@include media-query (sm) {
+			display: block;
+		}
+	}
+//	@include rem('padding', 12px 0);
+//
+//	@include media-query (sm) {
+//		@include rem('padding', 38px 0 0 0);
+//	}
+
 	.container {
 		width: auto;
 	}
@@ -83,7 +103,7 @@ $header_nav_font_size: 18px;
 	.navbar-collapse {
 
 		@include media-query (sm) {
-			@include rem('padding', 12px 0);
+			@include rem('padding', 38px 0 0 0);
 		}
 	}
 }

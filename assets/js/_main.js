@@ -28,6 +28,13 @@ var Roots = {
 	// Home page
 	home: {
 		init: function() {
+			var height  = $(window).height(),
+				width   = $(window).width();
+
+			if(width > 767) {
+				$('#intro').css({ height: height - 66 });
+			}
+
 			$('#compass').click(function(){
 				$('#map-navigation').fadeToggle();
 			});
@@ -71,7 +78,6 @@ var Roots = {
 			initGridrotator();
 
 
-
 			// About slider
 			var owlAbout = $("#about-slider");
 
@@ -86,6 +92,12 @@ var Roots = {
 
 			// Amenities slider
 			var owlAmenities = $("#amenities-slider");
+
+			$('#amenities-slider .hoverbox').mouseleave(function() {
+				$('#amenities-slider .hoverbox .hover-content').animate({
+					scrollTop: 0
+				}, 'slow');
+			});
 
 			owlAmenities.owlCarousel({
 				itemsCustom : [
@@ -102,6 +114,7 @@ var Roots = {
 			$("#next-amenity").click(function(){
 				owlAmenities.trigger('owl.next');
 			});
+
 			$("#prev-amenity").click(function(){
 				owlAmenities.trigger('owl.prev');
 			});
@@ -116,18 +129,40 @@ var Roots = {
 					[768, 2],
 					[1170, 2]
 				],
-				//navigation : true,
-				//navigationText: ["<i class='fa fa-angle-left'></i>","<i class='fa fa-angle-right'></i>"],
+				navigation : true,
+				navigationText: ["<i class='fa fa-angle-left'></i>","<i class='fa fa-angle-right'></i>"],
 				rewindNav: false,
 				autoHeight : true
 			});
 
-			$("#next-property").click(function(){
-				owlProperties.trigger('owl.next');
+			$('#properties-all').click(function(){
+				$(this).find('button').addClass('active');
+				$('#properties-available button').removeClass('active');
+				$('#properties-slider').fadeIn();
+				$('#available-properties-slider').hide();
 			});
-			$("#prev-property").click(function(){
-				owlProperties.trigger('owl.prev');
+
+			$('#properties-available').click(function(){
+				$(this).find('button').addClass('active');
+				$('#properties-all button').removeClass('active');
+				$('#properties-slider').hide();
+				$('#available-properties-slider').fadeIn();
+
+				var owlPropertiesAvailable = $("#available-properties-slider");
+
+				owlPropertiesAvailable.owlCarousel({
+					itemsCustom : [
+						[0, 1],
+						[768, 2],
+						[1170, 2]
+					],
+					navigation : true,
+					navigationText: ["<i class='fa fa-angle-left'></i>","<i class='fa fa-angle-right'></i>"],
+					rewindNav: false,
+					autoHeight : true
+				});
 			});
+
 
 			// Show Maps
 			// Category

@@ -2,7 +2,7 @@ $section_header_font_size: 42px;
 
 section.section.grid {
 	height: 300px;
-	@include media-query (xs) { height: 420px; }
+	@include media-query (xs) { height: 520px; }
 	@include media-query (sm) { height: 540px; }
 	@include media-query (md) { height: 565px; }
 
@@ -128,19 +128,20 @@ section.section {
 	.intro-block {
 		text-align: center;
 
-		@include media-query (sm) { @include rem('margin', 60px 0 0); }
-		@include media-query (md) { @include rem('margin', 80px 0 0); }
+		@include media-query (sm) { @include rem('margin', 0 0 0); }
+		@include media-query (md) { @include rem('margin', 0 0 0); }
 	}
 
 	.logo {
-		@include rem('width', 120px);
+		@include rem('width', 90px);
 		margin: 0 auto;
 
-		@include media-query (sm) {
+		@include media-query (xs) {
 			width: auto;
 		}
 
 		img {
+//			width: 80%;
 			display: inline-block;
 		}
 	}
@@ -158,5 +159,16 @@ section.section {
 
 	textarea {
 		height: 140px;
+	}
+
+	.contact-info {
+
+		h1, h2, h3 {
+			@include font-size(18px);
+		}
+
+		p {
+			@include font-size(13px);
+		}
 	}
 }
