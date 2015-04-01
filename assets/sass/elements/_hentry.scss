@@ -1,0 +1,14 @@
+.hentry {
+
+	a {
+		color: $blue_dark;
+	}
+
+	.fn, .published {
+		color: $blue_light;
+	}
+
+	&.blog-post {
+		border-top: 15px solid $blue_dark;
+	}
+}

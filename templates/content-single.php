@@ -1,15 +1,17 @@
-<?php while (have_posts()) : the_post(); ?>
-  <article <?php post_class(); ?>>
-    <header>
-      <h1 class="entry-title"><?php the_title(); ?></h1>
-      <?php get_template_part('templates/entry-meta'); ?>
-    </header>
-    <div class="entry-content">
-      <?php the_content(); ?>
-    </div>
-    <footer>
-      <?php wp_link_pages(array('before' => '<nav class="page-nav"><p>' . __('Pages:', 'roots'), 'after' => '</p></nav>')); ?>
-    </footer>
-    <?php comments_template('/templates/comments.php'); ?>
-  </article>
-<?php endwhile; ?>
+<?php if ( is_active_sidebar( 'sidebar-blog' ) ) : ?>
+	<div class="row">
+		<aside class="col-sm-5 col-md-3">
+			<?php dynamic_sidebar('sidebar-blog'); ?>
+		</aside>
+		<main class="main col-sm-7 col-md-9" role="main">
+			<?php get_template_part('templates/content', 'loop'); ?>
+		</main>
+	</div>
+<?php else: ?>
+
+<main class="main col-sm-8" role="main">
+	<?php get_template_part('templates/page', 'header'); ?>
+	<?php get_template_part('templates/content', 'blog'); ?>
+</main>
+
+<?php endif; ?>

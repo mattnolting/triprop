@@ -136,14 +136,8 @@ section.section {
 		@include rem('width', 90px);
 		margin: 0 auto;
 
-		@include media-query (xs) {
-			width: auto;
-		}
-
-		img {
-//			width: 80%;
-			display: inline-block;
-		}
+		@include media-query (xs) { width: auto; }
+		img { display: inline-block; }
 	}
 }
 
@@ -157,9 +151,7 @@ section.section {
 		}
 	}
 
-	textarea {
-		height: 140px;
-	}
+	textarea { height: 140px; }
 
 	.contact-info {
 

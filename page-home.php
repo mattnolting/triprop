@@ -168,14 +168,65 @@ Template Name: Page Home
 					<?php echo types_render_field("mobile-image", array("html"=>true)); ?>
 				</div>
 				<div class="container desktop">
+					<div class="filters filters-blue filters-map">
+						<div id="map-1-button" class="link">
+							<button class="tail-right active">Region Map</button>
+						</div>
+						<div id="map-2-button" class="link">
+							<button class="tail-left">Attractions Map</button>
+						</div>
+					</div>
 					<?php echo types_render_field("desktop-image", array("html"=>true)); ?>
-					<div class="map-container">
+					<div id="map-1" class="map-container">
 						<i id="compass" class="fa fa-compass"></i>
 						<?php
-						if (has_nav_menu('map_navigation')) : ?>
+						if (has_nav_menu('region_map_navigation')) : ?>
 							<aside id="map-navigation" class="side-nav map-navigation">
 								<h3>Legend</h3>
-								<?php wp_nav_menu(array('theme_location' => 'map_navigation', 'menu_class' => 'overlay-nav nav')); ?>
+								<?php wp_nav_menu(array('theme_location' => 'region_map_navigation', 'menu_class' => 'overlay-nav nav')); ?>
+							</aside>
+						<?php endif; ?>
+						<?php $locations 	= new WP_Query( array ( 'post_type' => 'properties', 'posts_per_page' => -1 ) ) ; ?>
+						<?php if( $locations->have_posts() ) : ?>
+							<?php
+							while ($locations->have_posts()) : $locations->the_post();
+								$x_pos		    = types_render_field("x-pos", array("raw"=>"true"));
+								$y_pos	    	= types_render_field("y-pos", array("raw"=>"true"));
+								$tail   		= types_render_field("tail-position", array("raw"=>"true"));
+								$popup_text 	= types_render_field("popup-text", array("html"=>"true"));
+								?>
+
+								<?php $categories = wp_get_post_terms($post->ID, 'map-type'); ?>
+
+								<div class="item item-attraction <?php echo $custom_icon ? 'custom-icon' : null ;?> <?php echo $post->post_name; ?>" style="left: <?php echo $x_pos; ?>%; top: <?php echo $y_pos; ?>%;"<?php foreach($categories as $category) { echo 'data-target="' . $category->slug . '"'; } ?>>
+									<div class="link-attraction">
+										<?php
+										foreach($categories as $category) {
+											echo '<div class="icon-' . $category->slug . '">' . get_term_thumbnail( $category->term_id  ) . '</div>';
+										}
+										?>
+									</div>
+									<div class="popup <?php echo $tail; ?>">
+										<div class="popup-content">
+											<div class="thumb"><?php the_post_thumbnail('popup'); ?></div>
+											<div class="text">
+												<h3><?php the_title(); ?></h3>
+												<?php echo $popup_text; ?>
+												<a href="<?php the_permalink(); ?>" class="btn btn-blue">Learn More</a>
+											</div>
+										</div>
+									</div>
+								</div>
+							<?php endwhile; ?>
+						<?php endif; wp_reset_query(); ?>
+					</div>
+					<div id="map-2" class="map-container">
+						<i id="compass" class="fa fa-compass"></i>
+						<?php
+						if (has_nav_menu('attraction_map_navigation')) : ?>
+							<aside id="map-navigation" class="side-nav map-navigation">
+								<h3>Legend</h3>
+								<?php wp_nav_menu(array('theme_location' => 'attraction_map_navigation', 'menu_class' => 'overlay-nav nav')); ?>
 							</aside>
 						<?php endif; ?>
 						<?php $locations 	= new WP_Query( array ( 'post_type' => 'properties', 'posts_per_page' => -1 ) ) ; ?>
@@ -229,7 +280,7 @@ Template Name: Page Home
 			<div class="section-content">
 				<div class="container container-slider">
 					<div class="slider-wrap">
-						<div class="row filters filters-property">
+						<div class="row filters filters-blue filters-property">
 							<div id="properties-all" class="col-sm-6">
 								<button class="tail-right active">View All Buildings</button>
 							</div>

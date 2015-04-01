@@ -8,4 +8,6 @@ function roots_wrap_base_cpts($templates) {
 	}
 	return $templates; // Return our modified array with base-$cpt.php at the front of the queue
 }
+
 ?>
+

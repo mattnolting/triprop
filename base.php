@@ -14,6 +14,8 @@
 
 	<?php if(is_page_template('page-home.php')) : ?>
 		<?php get_template_part('page-home'); ?>
+	<?php elseif(is_page_template('page-blog.php')) : ?>
+		<?php get_template_part('page-blog'); ?>
 	<?php else: ?>
 
 	<div class="wrap container" role="document">

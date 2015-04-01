@@ -1,12 +1,19 @@
 .filters {
 
-}
+	.link {
+		width: 50%;
+		float: left;
 
-.filters.filters-property {
-	@include rem('margin-bottom', 20px);
-	@include rem('padding', 0 12px);
+		button {
+			width: 96%;
+		}
 
-	@include media-query (sm) { @include rem('padding', 0 20px); }
+		&:nth-child(2) {
+			button {
+				float: right;
+			}
+		}
+	}
 
 	button {
 		width: 100%;
@@ -53,4 +60,20 @@
 			}
 		}
 	}
+}
+
+.filters.filters-blue {
+	@include rem('margin-bottom', 20px);
+	@include rem('padding', 0 12px);
+
+	@include media-query (sm) { @include rem('padding', 0 20px); }
+}
+
+.filters.filters-map {
+	position: absolute;
+	left: 15px;
+	top: 40px;
+	width: 100%;
+	margin: 0;
+	z-index: 999;
 }

@@ -1,3 +1,7 @@
+html {
+	font-family: 'Droid Serif'
+}
+
 *, *:focus, *:active {
 	@inlude box-shadow(none);
 	outline: none;
@@ -13,6 +17,7 @@
 		}
 	}
 }
+
 .wrap { }
 
 img {

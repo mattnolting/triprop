@@ -164,6 +164,20 @@ var Roots = {
 			});
 
 
+			$('#map-1-button').click(function(){
+				$(this).find('button').addClass('active');
+				$('#map-2-button button').removeClass('active');
+				$('#map-1').fadeIn();
+				$('#map-2').hide();
+			});
+
+			$('#map-2-button').click(function(){
+				$(this).find('button').addClass('active');
+				$('#map-1-button button').removeClass('active');
+				$('#map-2').fadeIn();
+				$('#map-1').hide();
+			});
+
 			// Show Maps
 			// Category
 			function showCategory() {

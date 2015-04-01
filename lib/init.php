@@ -11,7 +11,9 @@ function roots_setup() {
 	// http://codex.wordpress.org/Function_Reference/register_nav_menus
 	register_nav_menus(array(
 		'primary_navigation' => __('Primary Navigation', 'roots'),
-		'map_navigation' => __('Map Navigation', 'roots')
+//		'map_navigation' => __('Map Navigation', 'roots'),
+		'attraction_map_navigation' => __('Attraction Navigation', 'roots'),
+		'region_map_navigation' => __('Region Navigation', 'roots')
 	));
 
 	// Add post thumbnails
@@ -52,6 +54,15 @@ function roots_widgets_init() {
 		'before_title'  => '<h3>',
 		'after_title'   => '</h3>',
 	));
+
+	register_sidebar( array(
+		'name'          => __('Blog Sidebar', 'roots'),
+		'id'            => 'sidebar-blog',
+		'before_widget' => '<section class="widget %1$s %2$s">',
+		'after_widget'  => '</section>',
+		'before_title'  => '<h3>',
+		'after_title'   => '</h3>'
+	) );
 
 	register_sidebar(array(
 		'name'          => __('Footer', 'roots'),

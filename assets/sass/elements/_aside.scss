@@ -1,0 +1,8 @@
+aside {
+	@include rem('margin-bottom', 20px);
+
+	h3 {
+		margin-top: 0;
+		@include font-size(36px);
+	}
+}

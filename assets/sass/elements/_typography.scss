@@ -7,6 +7,10 @@ html {
 	}
 }
 
+body {
+	font-family: $paragraph_font_family;
+}
+
 h1 {
 	color: $header_font_color;
 	@include font-size($h1_font_size);

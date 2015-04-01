@@ -32,3 +32,26 @@ foreach ($roots_includes as $file) {
   require_once $filepath;
 }
 unset($file, $filepath);
+
+function wp_get_all_tags( $args = '' ) {
+
+	$tags = get_terms('post_tag');
+	if($tags) {
+		echo '<ul>';
+		foreach ( $tags as $key => $tag ) {
+			if ( 'edit' == 'view' )
+				$link = get_edit_tag_link( $tag->term_id, 'post_tag' );
+			else
+				$link = get_term_link( intval($tag->term_id), 'post_tag' );
+			if ( is_wp_error( $link ) )
+				return false;
+
+			$tags[ $key ]->link = $link;
+			$tags[ $key ]->id = $tag->term_id;
+			$tags[ $key ]->name = $tag->name;
+			echo '<li><a href="'. $link .'">' . $tag->name . '</a></li>';
+		}
+		echo '</ul>';
+		return $tags;
+	}
+}
