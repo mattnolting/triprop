@@ -25,7 +25,7 @@
 		<?php //if (roots_display_sidebar()) : ?>
 <!--		<aside class="sidebar" role="complementary">-->
 			<?php //include roots_sidebar_path(); ?>
-<!--		</aside><!-- /.sidebar -->-->
+<!--		</aside><!-- /.sidebar -->
 		<?php //endif; ?>
 	</div><!-- /.wrap -->
 

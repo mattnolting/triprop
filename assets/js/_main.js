@@ -35,8 +35,12 @@ var Roots = {
 				$('#intro').css({ height: height - 66 });
 			}
 
-			$('#compass').click(function(){
-				$('#map-navigation').fadeToggle();
+			$('#compass-region').click(function(){
+				$('#map-navigation-region').fadeToggle();
+			});
+
+			$('#compass-attraction').click(function(){
+				$('#map-navigation-attraction').fadeToggle();
 			});
 
 			function initGridrotator() {
@@ -77,7 +81,6 @@ var Roots = {
 
 			initGridrotator();
 
-
 			// About slider
 			var owlAbout = $("#about-slider");
 
@@ -88,7 +91,6 @@ var Roots = {
 				],
 				autoHeight : true
 			});
-
 
 			// Amenities slider
 			var owlAmenities = $("#amenities-slider");
@@ -118,7 +120,6 @@ var Roots = {
 			$("#prev-amenity").click(function(){
 				owlAmenities.trigger('owl.prev');
 			});
-
 
 			// Properties slider
 			var owlProperties = $("#properties-slider");
@@ -163,25 +164,24 @@ var Roots = {
 				});
 			});
 
-
 			$('#map-1-button').click(function(){
 				$(this).find('button').addClass('active');
 				$('#map-2-button button').removeClass('active');
-				$('#map-1').fadeIn();
-				$('#map-2').hide();
+				$('#map-1, #map-bg-regional').fadeIn();
+				$('#map-2, #map-bg-attraction').hide();
 			});
 
 			$('#map-2-button').click(function(){
 				$(this).find('button').addClass('active');
 				$('#map-1-button button').removeClass('active');
-				$('#map-2').fadeIn();
-				$('#map-1').hide();
+				$('#map-2, #map-bg-attraction').fadeIn();
+				$('#map-1, #map-bg-regional').hide();
 			});
 
 			// Show Maps
 			// Category
 			function showCategory() {
-				var sideNav     = $('#map-navigation'),
+				var sideNav     = $('.map-navigation'),
 					link        = sideNav.find('ul li');
 
 				link.mouseover(function(){
@@ -194,7 +194,7 @@ var Roots = {
 					$('.item-attraction').removeClass('hover');
 				});
 
-				$('#map-navigation, #compass').click(function(event){
+				$('.map-navigation, #compass').click(function(event){
 					event.stopPropagation();
 				});
 
@@ -228,14 +228,10 @@ var Roots = {
 					$('.popup').css({ 'z-index': 998 });
 					$(this).css({ 'z-index': 999 });
 				});
-
-				//
-				//$('.popup').mouseout(function(){
-				//	$(this).removeClass('hover');
-				//});
 			}
 
-			showCategory();		}
+			showCategory();
+		}
 	},
 	// About us page, note the change from about-us to about_us.
 	about_us: {

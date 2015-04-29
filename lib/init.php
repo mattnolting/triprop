@@ -10,10 +10,9 @@ function roots_setup() {
 	// Register wp_nav_menu() menus
 	// http://codex.wordpress.org/Function_Reference/register_nav_menus
 	register_nav_menus(array(
-		'primary_navigation' => __('Primary Navigation', 'roots'),
-//		'map_navigation' => __('Map Navigation', 'roots'),
-		'attraction_map_navigation' => __('Attraction Navigation', 'roots'),
-		'region_map_navigation' => __('Region Navigation', 'roots')
+		'attraction_map_navigation' => 'Attraction Navigation',
+		'region_map_navigation' => 'Region Navigation',
+		'primary_navigation' => __('Primary Navigation', 'roots')
 	));
 
 	// Add post thumbnails

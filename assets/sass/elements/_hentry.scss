@@ -1,14 +1,29 @@
 .hentry {
+	@include rem('padding', 20px 0);
+	@include rem('padding-bottom', 10px);
+
+	p { @include font-size(14px); }
+
 
 	a {
 		color: $blue_dark;
 	}
 
-	.fn, .published {
-		color: $blue_light;
+	.read-more, .fn, .published, .author {
+		color: #008aff;
 	}
 
 	&.blog-post {
 		border-top: 15px solid $blue_dark;
 	}
+
+	header {
+		@include rem('margin-bottom', 20px);
+	}
+}
+
+.entry-title {
+	@include font-size(36px);
+	line-height: 1;
+	@include rem('margin', 0 0 12px);
 }

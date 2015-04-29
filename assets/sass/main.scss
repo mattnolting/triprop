@@ -44,6 +44,8 @@
 @import "components/availability";
 @import "components/filters";
 @import "components/header-tags";
+@import "components/search";
+@import "components/filter-tags";
 
 
 // Pages
@@ -56,3 +58,4 @@
 //==================================================================*/
 @import "vendor/owl-carousel";
 @import "vendor/ri-grid";
+@import "vendor/tw-pagination";

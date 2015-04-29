@@ -1,0 +1,20 @@
+.tw-pagination {
+	@include rem('margin-top', 12px);
+	padding: 0;
+	text-align: right;
+
+	li {
+
+		span.current {
+			background: #008aff;
+			border: none;
+			color: #fff;
+		}
+
+		a {
+			background: none;
+			border: none;
+			color: #008aff;
+		}
+	}
+}

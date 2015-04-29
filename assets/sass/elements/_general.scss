@@ -2,6 +2,14 @@ html {
 	font-family: 'Droid Serif'
 }
 
+body.search {
+	background: #fff;
+}
+
+.read-more {
+	color: #008aff;
+}
+
 *, *:focus, *:active {
 	@inlude box-shadow(none);
 	outline: none;

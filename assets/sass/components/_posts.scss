@@ -55,3 +55,7 @@
 		text-decoration: none;
 	}
 }
+
+.header-post {
+	@include rem('margin', 60px 0 20px);
+}

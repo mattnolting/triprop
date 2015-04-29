@@ -1,0 +1,16 @@
+.filter-tags {
+	color: #008aff;
+	@include rem('margin-top', -28px);
+
+	a {
+		@include rem('margin-bottom', 6px);
+		color: #008aff;
+		display: block;
+	}
+
+	h4 {
+		margin-top: 0;
+		@include rem('padding-bottom', 12px);
+		border-bottom: 6px solid $blue-dark;
+	}
+}

@@ -64,7 +64,7 @@
 }
 
 section.section.map {
-	overflow-x: hidden;
+//	overflow-x: hidden;
 
 	.section-content {
 		padding: 0;
@@ -85,9 +85,10 @@ $title_background: rgba(255,255,255,.8);
 }
 
 .popup {
-	display: none;
 	position: absolute;
+	bottom: 18px;
 	padding-bottom: 64px;
+	display: none;
 
 	&.hover { z-index: 999; }
 
@@ -104,7 +105,10 @@ $title_background: rgba(255,255,255,.8);
 		@include box-shadow(0 0 0 4px rgba(0,0,0,.2));
 	}
 
-	&.left, &.center, &.right { bottom: 18px; }
+	&.center, &.left, &.right {
+		text-align: left;
+	}
+
 	&.left {
 		left: 0;
 		&:after { left: 4px; }
@@ -154,7 +158,7 @@ $title_background: rgba(255,255,255,.8);
 
 .map-container {
 	position: absolute;
-	top: 0;
+	top: 70px;
 	left: 0;
 	width: 100%;
 	height: 100%;
@@ -175,4 +179,12 @@ $title_background: rgba(255,255,255,.8);
 	}
 
 	.hover { [class^="icon-"], [class*="icon-"] { color: #093554; } }
+}
+
+.map-2 {
+	display: none;
+}
+
+.map-bg-attraction {
+	display: none;
 }

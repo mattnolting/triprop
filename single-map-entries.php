@@ -2,9 +2,8 @@
 	<?php
 		$addy		            = types_render_field("property_address", array("raw"=>true));
 		$availability		    = types_render_field("property_availability", array("raw"=>true));
-		$square_footage	  	= types_render_field("property_square_footage", array("raw"=>true));
-		$toggle		          = types_render_field("property_toggle", array("raw"=>true));
-		$pdf                = types_render_field("download_pdf", array("raw"=>true));
+		$square_footage	    	= types_render_field("property_square_footage", array("raw"=>true));
+		$toggle		            = types_render_field("property_toggle", array("raw"=>true));
 	?>
 
 	<header class="properties-header header-post">
@@ -100,7 +99,6 @@
 					echo '</div>';
 				}
 			}
-
 		?>
 
 	</footer>

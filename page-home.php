@@ -176,17 +176,30 @@ Template Name: Page Home
 							<button class="tail-left">Attractions Map</button>
 						</div>
 					</div>
-					<?php echo types_render_field("desktop-image", array("html"=>true)); ?>
-					<div id="map-1" class="map-container">
-						<i id="compass" class="fa fa-compass"></i>
+
+					<div id="map-bg-regional" class="map-bg map-bg-regional"><?php echo types_render_field("regional-image", array("html"=>true)); ?></div>
+					<div id="map-bg-attraction" class="map-bg map-bg-attraction"><?php echo types_render_field("attraction-map-entry", array("html"=>true)); ?></div>
+
+					<div id="map-1" class="map-container map-1">
+						<i id="compass-region" class="fa fa-compass"></i>
 						<?php
 						if (has_nav_menu('region_map_navigation')) : ?>
-							<aside id="map-navigation" class="side-nav map-navigation">
+							<aside id="map-navigation-region" class="side-nav map-navigation">
 								<h3>Legend</h3>
 								<?php wp_nav_menu(array('theme_location' => 'region_map_navigation', 'menu_class' => 'overlay-nav nav')); ?>
 							</aside>
 						<?php endif; ?>
-						<?php $locations 	= new WP_Query( array ( 'post_type' => 'properties', 'posts_per_page' => -1 ) ) ; ?>
+						<?php $locations 	= new WP_Query( array (
+							'post_type' => 'map-entries',
+							'tax_query' => array(
+								array(
+									'taxonomy' => 'map-section',
+									'field'    => 'slug',
+									'terms'    => 'regional-map',
+								),
+							),
+							'posts_per_page' => -1 ) );
+						?>
 						<?php if( $locations->have_posts() ) : ?>
 							<?php
 							while ($locations->have_posts()) : $locations->the_post();
@@ -220,16 +233,26 @@ Template Name: Page Home
 							<?php endwhile; ?>
 						<?php endif; wp_reset_query(); ?>
 					</div>
-					<div id="map-2" class="map-container">
-						<i id="compass" class="fa fa-compass"></i>
+					<div id="map-2" class="map-container map-2">
+						<i id="compass-attraction" class="fa fa-compass"></i>
 						<?php
 						if (has_nav_menu('attraction_map_navigation')) : ?>
-							<aside id="map-navigation" class="side-nav map-navigation">
+							<aside id="map-navigation-attraction" class="side-nav map-navigation">
 								<h3>Legend</h3>
 								<?php wp_nav_menu(array('theme_location' => 'attraction_map_navigation', 'menu_class' => 'overlay-nav nav')); ?>
 							</aside>
 						<?php endif; ?>
-						<?php $locations 	= new WP_Query( array ( 'post_type' => 'properties', 'posts_per_page' => -1 ) ) ; ?>
+						<?php $locations 	= new WP_Query( array (
+							'post_type' => 'map-entries',
+							'tax_query' => array(
+								array(
+									'taxonomy' => 'map-section',
+									'field'    => 'slug',
+									'terms'    => 'attraction-map',
+								),
+							),
+							'posts_per_page' => -1 ) );
+						?>
 						<?php if( $locations->have_posts() ) : ?>
 							<?php
 							while ($locations->have_posts()) : $locations->the_post();
