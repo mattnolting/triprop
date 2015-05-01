@@ -80,13 +80,17 @@ $title_background: rgba(255,255,255,.8);
 	position: relative;
 	@include transition(.2s);
 
-	&:hover, &.active, &.hover { .popup { display: block; } }
+	&:active {
+		display: block;
+	}
+
+//	&:hover, &.active, &.hover { .popup { display: block; } }
 	button:active, button:focus { outline: none; }
 }
 
 .popup {
 	position: absolute;
-	bottom: 18px;
+	bottom: 8px;
 	padding-bottom: 64px;
 	display: none;
 
@@ -110,15 +114,15 @@ $title_background: rgba(255,255,255,.8);
 	}
 
 	&.left {
-		left: 0;
+		left: -4px;
 		&:after { left: 4px; }
 	}
 	&.right {
-		right: -60px;
+		right: -64px;
 		&:after { right: 80px; }
 	}
 	&.center {
-		left: -170px;
+		left: -180px;
 		&:after { right: 190px; }
 	}
 	&:after {
@@ -165,7 +169,16 @@ $title_background: rgba(255,255,255,.8);
 	z-index: 99;
 
 	.item {
+		display: none;
 		position: absolute;
+
+		&.active {
+			display: block;
+		}
+
+		&:hover .popup, &.hover {
+			display: block;
+		}
 
 		&:hover, &.active { [class^="icon-"], [class*="icon-"] { color: #093554; } }
 
@@ -187,4 +200,12 @@ $title_background: rgba(255,255,255,.8);
 
 .map-bg-attraction {
 	display: none;
+}
+
+.link-attraction {
+
+	img {
+		max-width: 40px;
+		height: auto;
+	}
 }

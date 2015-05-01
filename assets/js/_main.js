@@ -185,9 +185,9 @@ var Roots = {
 					link        = sideNav.find('ul li');
 
 				link.mouseover(function(){
-					target = $(this).attr('class');
+					target = $(this).attr('class').split(' ')[0];
 					$('.item-attraction').not(target).removeClass('hover');
-					$('.item-attraction[ data-target=' + target + ']' ).addClass('hover');
+					$('.item-attraction[data-target=' + target + ']').addClass('hover');
 				});
 
 				$('html').click(function() {
@@ -204,7 +204,6 @@ var Roots = {
 
 				link.click(function(e){
 					e.preventDefault();
-
 					target = $(this).attr('class');
 
 					if($(this).hasClass('active')) {

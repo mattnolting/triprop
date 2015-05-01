@@ -66,6 +66,7 @@ function roots_scripts() {
 	wp_enqueue_script( 'picturefill', get_template_directory_uri() . '/assets/vendor/picturefill/src/picturefill.js', array(), '1.0.0', true );
 
 	wp_enqueue_script('roots_js', get_template_directory_uri() . $assets['js'], array(), null, true);
+//	wp_enqueue_script('roots_js', get_template_directory_uri() . '/assets/js/_main.js', array(), null, true);
 }
 add_action('wp_enqueue_scripts', 'roots_scripts', 100);
 

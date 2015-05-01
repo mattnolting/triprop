@@ -48,13 +48,16 @@
 		h1, h2, h3 {
 			margin: 0 0 12px;
 			color: #fff;
-
-			@include font-size(24px);
+			@include font-size(18px, 20px);
 			line-height: 1;
 
 			@include media-query (sm) {
-				@include font-size(36px);
+				@include font-size(24px, 22px);
 				line-height: 1;
+			}
+
+			@include media-query (md) {
+				@include font-size(36px);
 			}
 
 		}
