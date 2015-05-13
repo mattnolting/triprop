@@ -217,19 +217,56 @@ var Roots = {
 						link.not(this).removeClass('active');
 					}
 				});
-
-				$('.popup').hover(function(){
-					$('.popup').css({ 'z-index': 998 });
-					$(this).css({ 'z-index': 999 });
-				});
-
-				$('.popup').click(function(){
-					$('.popup').css({ 'z-index': 998 });
-					$(this).css({ 'z-index': 999 });
-				});
 			}
 
 			showCategory();
+
+			//$('.item-attraction').click(function(){
+			//	$('.item-attraction').not(this).removeClass('clicked');
+			//	$(this).toggleClass('clicked');
+			//});
+			//
+			//$(document).keyup(function(e) {
+			//	if (e.keyCode === 27) {
+			//		$('.item-attraction').removeClass('clicked');
+			//	}
+			//});
+
+			function popupHover() {
+				var linkAttraction  = $('.link-attraction');
+				var itemAttraction  = $('.item-attraction');
+				var className       = 'show';
+
+				$(document).keyup(function(e) {
+					if (e.keyCode === 27) {
+						$('.item-attraction').removeClass('clicked');
+					}
+				});
+
+				$('html').click(function() {
+					itemAttraction.removeClass('clicked');
+				});
+
+				$(itemAttraction).click(function(event){
+					event.stopPropagation();
+				});
+
+				linkAttraction.click(function(){
+					$(this).parent().toggleClass('clicked');
+					linkAttraction.not(this).parent().removeClass('clicked');
+				});
+
+				linkAttraction.hover(function(){
+					$(this).parent().addClass(className);
+				});
+
+				itemAttraction.mouseleave(function(){
+					itemAttraction.not('clicked').removeClass(className);
+				});
+			}
+
+			popupHover();
+
 		}
 	},
 	// About us page, note the change from about-us to about_us.

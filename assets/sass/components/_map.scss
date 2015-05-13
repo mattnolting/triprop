@@ -90,8 +90,8 @@ $title_background: rgba(255,255,255,.8);
 
 .popup {
 	position: absolute;
-	bottom: 8px;
-	padding-bottom: 64px;
+	bottom: 50px;
+	@include rem('padding-bottom', 30px);
 	display: none;
 
 	&.hover { z-index: 999; }
@@ -130,12 +130,19 @@ $title_background: rgba(255,255,255,.8);
 		position: absolute;
 		width: 24px;
 		height: 42px;
-		bottom: 22px;
+		bottom: -17px;
 	}
 }
 
-.popup {
+.clicked .popup {
+	display: block;
+}
 
+.popup, .popup-content {
+	@extend %clearfix;
+}
+
+.popup {
 	h3 {
 		color: $blue_dark;
 		margin-top: 0;
@@ -147,6 +154,10 @@ $title_background: rgba(255,255,255,.8);
 		width: 66%;
 		float: right;
 		margin-left: 4%;
+
+		&.full-width {
+			width: 100%;
+		}
 
 		p { @include font-size(11px); }
 	}
@@ -171,12 +182,17 @@ $title_background: rgba(255,255,255,.8);
 	.item {
 		display: none;
 		position: absolute;
+//		width: 40px;
 
 		&.active {
 			display: block;
 		}
 
-		&:hover .popup, &.hover {
+//		&:hover .popup, &.hover {
+//			display: block;
+//		}
+
+		&.hover {
 			display: block;
 		}
 
@@ -203,9 +219,35 @@ $title_background: rgba(255,255,255,.8);
 }
 
 .link-attraction {
+	z-index: 999;
+
+	&:hover {
+		z-index: 9999;
+	}
 
 	img {
 		max-width: 40px;
 		height: auto;
+	}
+}
+
+.clicked {
+	&.item-attraction {
+		z-index: 998;
+	}
+}
+
+.show {
+	&.item-attraction {
+		z-index: 9999;
+	}
+}
+
+
+.show {
+
+	.popup {
+		display: block;
+		z-index: 2000;
 	}
 }

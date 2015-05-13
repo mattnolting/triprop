@@ -212,6 +212,24 @@ Template Name: Page Home
 								<?php $categories = wp_get_post_terms($post->ID, 'map-type'); ?>
 
 								<div class="item item-attraction <?php echo $custom_icon ? 'custom-icon' : null ;?> <?php echo $post->post_name; ?>" style="left: <?php echo $x_pos; ?>%; top: <?php echo $y_pos; ?>%;"<?php foreach($categories as $category) { echo 'data-target="' . $category->slug . '"'; } ?>>
+									<div class="popup <?php echo $tail; ?>">
+										<div class="popup-content">
+											<?php if(has_post_thumbnail()): ?>
+											<div class="thumb"><?php the_post_thumbnail('popup'); ?></div>
+											<div class="text">
+												<h3><?php the_title(); ?></h3>
+												<?php echo $popup_text; ?>
+												<a href="<?php the_permalink(); ?>" class="btn btn-blue">Learn More</a>
+											</div>
+											<?php else: ?>
+											<div class="text full-width">
+												<h3><?php the_title(); ?></h3>
+												<?php echo $popup_text; ?>
+												<a href="<?php the_permalink(); ?>" class="btn btn-blue">Learn More</a>
+											</div>
+											<?php endif; ?>
+										</div>
+									</div>
 									<div class="link-attraction">
 										<?php
 										foreach($categories as $category) {
@@ -219,16 +237,7 @@ Template Name: Page Home
 										}
 										?>
 									</div>
-									<div class="popup <?php echo $tail; ?>">
-										<div class="popup-content">
-											<div class="thumb"><?php the_post_thumbnail('popup'); ?></div>
-											<div class="text">
-												<h3><?php the_title(); ?></h3>
-												<?php echo $popup_text; ?>
-												<a href="<?php the_permalink(); ?>" class="btn btn-blue">Learn More</a>
-											</div>
-										</div>
-									</div>
+
 								</div>
 							<?php endwhile; ?>
 						<?php endif; wp_reset_query(); ?>
@@ -265,22 +274,30 @@ Template Name: Page Home
 								<?php $categories = wp_get_post_terms($post->ID, 'map-type'); ?>
 
 								<div class="item item-attraction <?php echo $custom_icon ? 'custom-icon' : null ;?> <?php echo $post->post_name; ?>" style="left: <?php echo $x_pos; ?>%; top: <?php echo $y_pos; ?>%;"<?php foreach($categories as $category) { echo 'data-target="' . $category->slug . '"'; } ?>>
+									<div class="popup <?php echo $tail; ?>">
+										<div class="popup-content">
+											<?php if(has_post_thumbnail()): ?>
+												<div class="thumb"><?php the_post_thumbnail('popup'); ?></div>
+												<div class="text">
+													<h3><?php the_title(); ?></h3>
+													<?php echo $popup_text; ?>
+													<a href="<?php the_permalink(); ?>" class="btn btn-blue">Learn More</a>
+												</div>
+											<?php else: ?>
+												<div class="text full-width">
+													<h3><?php the_title(); ?></h3>
+													<?php echo $popup_text; ?>
+													<a href="<?php the_permalink(); ?>" class="btn btn-blue">Learn More</a>
+												</div>
+											<?php endif; ?>
+										</div>
+									</div>
 									<div class="link-attraction">
 										<?php
 										foreach($categories as $category) {
 											echo '<div class="icon-' . $category->slug . '">' . get_term_thumbnail( $category->term_id  ) . '</div>';
 										}
 										?>
-									</div>
-									<div class="popup <?php echo $tail; ?>">
-										<div class="popup-content">
-											<div class="thumb"><?php the_post_thumbnail('popup'); ?></div>
-											<div class="text">
-												<h3><?php the_title(); ?></h3>
-												<?php echo $popup_text; ?>
-												<a href="<?php the_permalink(); ?>" class="btn btn-blue">Learn More</a>
-											</div>
-										</div>
 									</div>
 								</div>
 							<?php endwhile; ?>
