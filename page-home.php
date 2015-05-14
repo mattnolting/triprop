@@ -177,17 +177,20 @@ Template Name: Page Home
 						</div>
 					</div>
 
-					<div id="map-bg-regional" class="map-bg map-bg-regional"><?php echo types_render_field("regional-image", array("html"=>true)); ?></div>
-					<div id="map-bg-attraction" class="map-bg map-bg-attraction"><?php echo types_render_field("attraction-map-entry", array("html"=>true)); ?></div>
+<!--					<div id="map-bg-regional" class="map-bg map-bg-regional">--><?php //echo types_render_field("regional-image", array("html"=>true)); ?><!--</div>-->
+<!--					<div id="map-bg-attraction" class="map-bg map-bg-attraction">--><?php //echo types_render_field("attraction-map-entry", array("html"=>true)); ?><!--</div>-->
 
 					<div id="map-1" class="map-container map-1">
+						<?php echo types_render_field("regional-image", array("html"=>true)); ?>
 						<i id="compass-region" class="fa fa-compass"></i>
 						<?php
 						if (has_nav_menu('region_map_navigation')) : ?>
-							<aside id="map-navigation-region" class="side-nav map-navigation">
-								<h3>Legend</h3>
-								<?php wp_nav_menu(array('theme_location' => 'region_map_navigation', 'menu_class' => 'overlay-nav nav')); ?>
-							</aside>
+							<div id="map-attraction-container" class="map-attraction-container map-nav-container">
+								<aside id="map-navigation-region" class="side-nav map-navigation">
+									<h3>Legend</h3>
+									<?php wp_nav_menu(array('theme_location' => 'region_map_navigation', 'menu_class' => 'overlay-nav nav')); ?>
+								</aside>
+							</div>
 						<?php endif; ?>
 						<?php $locations 	= new WP_Query( array (
 							'post_type' => 'map-entries',
@@ -219,13 +222,13 @@ Template Name: Page Home
 											<div class="text">
 												<h3><?php the_title(); ?></h3>
 												<?php echo $popup_text; ?>
-												<a href="<?php the_permalink(); ?>" class="btn btn-blue">Learn More</a>
+												<?php if(types_render_field("show-read-more-button", array("raw"=>true))): ?><a href="<?php the_permalink(); ?>" class="btn btn-blue">Learn More</a><?php endif; ?>
 											</div>
 											<?php else: ?>
 											<div class="text full-width">
 												<h3><?php the_title(); ?></h3>
 												<?php echo $popup_text; ?>
-												<a href="<?php the_permalink(); ?>" class="btn btn-blue">Learn More</a>
+												<?php if(types_render_field("show-read-more-button", array("raw"=>true))): ?><a href="<?php the_permalink(); ?>" class="btn btn-blue">Learn More</a><?php endif; ?>
 											</div>
 											<?php endif; ?>
 										</div>
@@ -233,7 +236,7 @@ Template Name: Page Home
 									<div class="link-attraction">
 										<?php
 										foreach($categories as $category) {
-											echo '<div class="icon-' . $category->slug . '">' . get_term_thumbnail( $category->term_id  ) . '</div>';
+											echo '<i class="icon-' . $category->slug . '">' . get_term_thumbnail( $category->term_id  ) . '</i>';
 										}
 										?>
 									</div>
@@ -243,14 +246,28 @@ Template Name: Page Home
 						<?php endif; wp_reset_query(); ?>
 					</div>
 					<div id="map-2" class="map-container map-2">
+						<?php echo types_render_field("attraction-map-entry", array("html"=>true)); ?>
+						<div class="alert-message">Click on an item in the legend to view it on this map.</div>
 						<i id="compass-attraction" class="fa fa-compass"></i>
-						<?php
-						if (has_nav_menu('attraction_map_navigation')) : ?>
-							<aside id="map-navigation-attraction" class="side-nav map-navigation">
-								<h3>Legend</h3>
-								<?php wp_nav_menu(array('theme_location' => 'attraction_map_navigation', 'menu_class' => 'overlay-nav nav')); ?>
-							</aside>
-						<?php endif; ?>
+
+							<!-- Attraction Nav Links -->
+							<?php if (has_nav_menu('attraction_map_navigation')) : ?>
+							<div id="attraction-map-container" class="attraction-map-container map-nav-container">
+								<aside id="map-navigation-attraction" class="side-nav map-navigation">
+									<h3>Filter</h3>
+									<?php wp_nav_menu(array('theme_location' => 'attraction_map_navigation', 'menu_class' => 'overlay-nav nav')); ?>
+								</aside>
+							<?php endif; ?>
+
+							<!-- Hover Links -->
+							<?php if (has_nav_menu('attraction_map_hover')) : ?>
+								<aside id="map-navigation-attraction-hover" class="side-nav map-navigation map-navigation-attraction-hover">
+									<h3>Toggle</h3>
+									<?php wp_nav_menu(array('theme_location' => 'attraction_map_hover', 'menu_class' => 'overlay-nav nav')); ?>
+								</aside>
+							</div>
+							<?php endif; ?>
+
 						<?php $locations 	= new WP_Query( array (
 							'post_type' => 'map-entries',
 							'tax_query' => array(
@@ -281,13 +298,13 @@ Template Name: Page Home
 												<div class="text">
 													<h3><?php the_title(); ?></h3>
 													<?php echo $popup_text; ?>
-													<a href="<?php the_permalink(); ?>" class="btn btn-blue">Learn More</a>
+													<?php if(types_render_field("show-read-more-button", array("raw"=>true))): ?><a href="<?php the_permalink(); ?>" class="btn btn-blue">Learn More</a><?php endif; ?>
 												</div>
 											<?php else: ?>
 												<div class="text full-width">
 													<h3><?php the_title(); ?></h3>
 													<?php echo $popup_text; ?>
-													<a href="<?php the_permalink(); ?>" class="btn btn-blue">Learn More</a>
+													<?php if(types_render_field("show-read-more-button", array("raw"=>true))): ?><a href="<?php the_permalink(); ?>" class="btn btn-blue">Learn More</a><?php endif; ?>
 												</div>
 											<?php endif; ?>
 										</div>
@@ -295,7 +312,7 @@ Template Name: Page Home
 									<div class="link-attraction">
 										<?php
 										foreach($categories as $category) {
-											echo '<div class="icon-' . $category->slug . '">' . get_term_thumbnail( $category->term_id  ) . '</div>';
+											echo '<i class="icon-' . $category->slug . '">' . get_term_thumbnail( $category->term_id  ) . '</i>';
 										}
 										?>
 									</div>

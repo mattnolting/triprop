@@ -40,7 +40,7 @@ var Roots = {
 			});
 
 			$('#compass-attraction').click(function(){
-				$('#map-navigation-attraction').fadeToggle();
+				$('#map-attraction-container').fadeToggle();
 			});
 
 			function initGridrotator() {
@@ -113,13 +113,8 @@ var Roots = {
 				autoHeight : true
 			});
 
-			$("#next-amenity").click(function(){
-				owlAmenities.trigger('owl.next');
-			});
-
-			$("#prev-amenity").click(function(){
-				owlAmenities.trigger('owl.prev');
-			});
+			$("#next-amenity").click(function(){ owlAmenities.trigger('owl.next'); });
+			$("#prev-amenity").click(function(){ owlAmenities.trigger('owl.prev'); });
 
 			// Properties slider
 			var owlProperties = $("#properties-slider");
@@ -181,13 +176,14 @@ var Roots = {
 			// Show Maps
 			// Category
 			function showCategory() {
-				var sideNav     = $('.map-navigation'),
+				var sideNav     = $('#map-2 .map-navigation').not('#map-navigation-attraction-hover'),
 					link        = sideNav.find('ul li');
 
 				link.mouseover(function(){
 					target = $(this).attr('class').split(' ')[0];
 					$('.item-attraction').not(target).removeClass('hover');
 					$('.item-attraction[data-target=' + target + ']').addClass('hover');
+					$('.alert-message').hide();
 				});
 
 				$('html').click(function() {
@@ -218,19 +214,6 @@ var Roots = {
 					}
 				});
 			}
-
-			showCategory();
-
-			//$('.item-attraction').click(function(){
-			//	$('.item-attraction').not(this).removeClass('clicked');
-			//	$(this).toggleClass('clicked');
-			//});
-			//
-			//$(document).keyup(function(e) {
-			//	if (e.keyCode === 27) {
-			//		$('.item-attraction').removeClass('clicked');
-			//	}
-			//});
 
 			function popupHover() {
 				var linkAttraction  = $('.link-attraction');
@@ -265,8 +248,23 @@ var Roots = {
 				});
 			}
 
-			popupHover();
+			function toggleMapOverlays() {
+				$('#map-navigation-attraction-hover a').each(function(){
+					var url = $(this).attr('href');
+					$('#map-2').prepend('<img id="'+ url + '" class="map-overlay-image" src="' + url + '" />');
+				});
 
+				$('#map-navigation-attraction-hover a').click(function(event){
+					event.preventDefault();
+					var clickUrl = document.getElementById($(this).attr('href'));
+					//console.log(clickUrl);
+					$(clickUrl).toggle();
+				});
+			}
+
+			showCategory();
+			popupHover();
+			toggleMapOverlays();
 		}
 	},
 	// About us page, note the change from about-us to about_us.

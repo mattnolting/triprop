@@ -12,6 +12,7 @@ function roots_setup() {
 	register_nav_menus(array(
 		'attraction_map_navigation' => 'Attraction Navigation',
 		'region_map_navigation' => 'Region Navigation',
+		'attraction_map_hover' => 'Attraction Map Hover Navigation',
 		'primary_navigation' => __('Primary Navigation', 'roots')
 	));
 
