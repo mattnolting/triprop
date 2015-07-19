@@ -36,11 +36,11 @@ var Roots = {
 			}
 
 			$('#compass-region').click(function(){
-				$('#map-navigation-region').fadeToggle();
+				$('#map-region-container').fadeToggle();
 			});
 
 			$('#compass-attraction').click(function(){
-				$('#map-attraction-container').fadeToggle();
+				$('#attraction-map-container').fadeToggle();
 			});
 
 			function initGridrotator() {

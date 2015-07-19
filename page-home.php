@@ -44,7 +44,7 @@ Template Name: Page Home
 				</div>
 			</div>
 			<div class="section-content locked">
-				<div id="ri-grid" class="ri-grid">
+				<div id="ri-grid" class="ri-grid visible hidden-xs">
 					<ul>
 						<?php
 						$field_values = simple_fields_values("homepage_intro_images");
@@ -59,6 +59,9 @@ Template Name: Page Home
 							<?php endforeach; ?>
 						<?php endif; ?>
 					</ul>
+				</div>
+				<?php $homepage_bg = simple_fields_value("homepage_mobile_bg"); ?>
+				<div class="visible-xs" style="background: url('<?php echo $homepage_bg['url']; ?>'); background-size: cover; height: 100%">
 				</div>
 			</div>
 		</section>
@@ -185,7 +188,7 @@ Template Name: Page Home
 						<i id="compass-region" class="fa fa-compass"></i>
 						<?php
 						if (has_nav_menu('region_map_navigation')) : ?>
-							<div id="map-attraction-container" class="map-attraction-container map-nav-container">
+							<div id="map-region-container" class="map-region-container map-nav-container">
 								<aside id="map-navigation-region" class="side-nav map-navigation">
 									<h3>Legend</h3>
 									<?php wp_nav_menu(array('theme_location' => 'region_map_navigation', 'menu_class' => 'overlay-nav nav')); ?>
@@ -222,13 +225,25 @@ Template Name: Page Home
 											<div class="text">
 												<h3><?php the_title(); ?></h3>
 												<?php echo $popup_text; ?>
-												<?php if(types_render_field("show-read-more-button", array("raw"=>true))): ?><a href="<?php the_permalink(); ?>" class="btn btn-blue">Learn More</a><?php endif; ?>
+												<?php if(types_render_field("show-read-more-button", array("raw"=>true))): ?>
+													<?php if(types_render_field("alternate-url", array("raw"=>true))): ?>
+														<a href="<?php echo types_render_field("alternate-url", array("raw"=>true)); ?>" class="btn btn-blue">Learn More</a>
+													<?php else: ?>
+														<a href="<?php the_permalink(); ?>" class="btn btn-blue">Learn More</a>
+													<?php endif; ?>
+												<?php endif; ?>
 											</div>
 											<?php else: ?>
 											<div class="text full-width">
 												<h3><?php the_title(); ?></h3>
 												<?php echo $popup_text; ?>
-												<?php if(types_render_field("show-read-more-button", array("raw"=>true))): ?><a href="<?php the_permalink(); ?>" class="btn btn-blue">Learn More</a><?php endif; ?>
+												<?php if(types_render_field("show-read-more-button", array("raw"=>true))): ?>
+													<?php if(types_render_field("alternate-url", array("raw"=>true))): ?>
+														<a href="<?php echo types_render_field("alternate-url", array("raw"=>true)); ?>" class="btn btn-blue">Learn More</a>
+													<?php else: ?>
+														<a href="<?php the_permalink(); ?>" class="btn btn-blue">Learn More</a>
+													<?php endif; ?>
+												<?php endif; ?>
 											</div>
 											<?php endif; ?>
 										</div>
@@ -298,13 +313,25 @@ Template Name: Page Home
 												<div class="text">
 													<h3><?php the_title(); ?></h3>
 													<?php echo $popup_text; ?>
-													<?php if(types_render_field("show-read-more-button", array("raw"=>true))): ?><a href="<?php the_permalink(); ?>" class="btn btn-blue">Learn More</a><?php endif; ?>
+													<?php if(types_render_field("show-read-more-button", array("raw"=>true))): ?>
+														<?php if(types_render_field("alternate-url", array("raw"=>true))): ?>
+															<a href="<?php echo types_render_field("alternate-url", array("raw"=>true)); ?>" class="btn btn-blue">Learn More</a>
+														<?php else: ?>
+															<a href="<?php the_permalink(); ?>" class="btn btn-blue">Learn More</a>
+														<?php endif; ?>
+													<?php endif; ?>
 												</div>
 											<?php else: ?>
 												<div class="text full-width">
 													<h3><?php the_title(); ?></h3>
 													<?php echo $popup_text; ?>
-													<?php if(types_render_field("show-read-more-button", array("raw"=>true))): ?><a href="<?php the_permalink(); ?>" class="btn btn-blue">Learn More</a><?php endif; ?>
+													<?php if(types_render_field("show-read-more-button", array("raw"=>true))): ?>
+														<?php if(types_render_field("alternate-url", array("raw"=>true))): ?>
+															<a href="<?php echo types_render_field("alternate-url", array("raw"=>true)); ?>" class="btn btn-blue">Learn More</a>
+														<?php else: ?>
+															<a href="<?php the_permalink(); ?>" class="btn btn-blue">Learn More</a>
+														<?php endif; ?>
+													<?php endif; ?>
 												</div>
 											<?php endif; ?>
 										</div>
