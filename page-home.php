@@ -176,7 +176,7 @@ Template Name: Page Home
 							<button class="tail-right active">Region Map</button>
 						</div>
 						<div id="map-2-button" class="link">
-							<button class="tail-left">Attractions Map</button>
+							<button class="tail-left">Park Map</button>
 						</div>
 					</div>
 

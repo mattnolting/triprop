@@ -2,9 +2,6 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-sm-6">
-				<div class="section-title">
-					<a class="brand brand-secondary" href="<?php echo esc_url(ot_get_option( 'logo_footer' )); ?>"><?php echo ot_get_option( 'logo_footer' ) ? '<img src="' . ot_get_option( 'logo_footer' ) . '" alt="Home" />' : bloginfo('name'); ?></a>
-				</div>
 				<p><?php echo ot_get_option( 'address' ); ?></p>
 			</div>
 			<div class="col-sm-6 col-md-5 col-md-offset-1">
