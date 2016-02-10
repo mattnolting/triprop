@@ -10,6 +10,7 @@ function roots_setup() {
 	// Register wp_nav_menu() menus
 	// http://codex.wordpress.org/Function_Reference/register_nav_menus
 	register_nav_menus(array(
+		'intro_nav' => 'Homepage Intro Nav',
 		'attraction_map_navigation' => 'Attraction Navigation',
 		'region_map_navigation' => 'Region Navigation',
 		'attraction_map_hover' => 'Attraction Map Hover Navigation',
@@ -25,6 +26,7 @@ function roots_setup() {
 	add_image_size('owl_thumb-medium', 400, 400, true);
 	add_image_size('owl_thumb-small', 320, 320, true);
 	add_image_size('popup', 122, 122, true);
+	add_image_size('hero_image', 600, 1080, true);
 
 	@ini_set( 'upload_max_size' , '64M' );
 	@ini_set( 'post_max_size', '64M');

@@ -5,11 +5,6 @@ Template Name: Page Home
 ?>
 
 
-<script>
-	$(document).ready(function(){
-
-	});
-</script>
 <div class="wrap" role="document">
 	<main class="main" role="main">
 
@@ -17,7 +12,16 @@ Template Name: Page Home
 			<div class="section-content">
 				<div class="container">
 					<div class="intro-block">
-						<div class="logo"><img src="<?php echo ot_get_option( 'home_intro_logo' ); ?>" alt="Imperial Center" /></div>
+						<div class="logo">
+							<img src="<?php echo ot_get_option( 'home_intro_logo' ); ?>" alt="Imperial Center" />
+						</div>
+						<?php if (has_nav_menu('intro_nav')) : ?>
+						<div class="intro-nav">
+							<?php wp_nav_menu(array('theme_location' => 'intro_nav', 'menu_class' => 'test')); ?>
+
+						</div>
+						<?php endif; ?>
+
 						<div class="intro-nav">
 							<a href="#properties" class="ribbon-link">
 								<span class="icon icon-building"></span>
@@ -53,7 +57,7 @@ Template Name: Page Home
 						if($field_values) : ?>
 							<?php foreach($field_values as $val) : ?>
 								<li>
-									<a href="#"><?php echo '<img src="' . $field_values[$i]['url'] . '" alt="Rotator Image ' . $i . '"/>'; ?></a>
+									<a href="#"><?php echo '<img src="' . $val['image_src']['hero_image'][0] . '" alt="Rotator Image ' . $i . '"/>'; ?></a>
 								</li>
 								<?php $i++; ?>
 							<?php endforeach; ?>
@@ -61,7 +65,7 @@ Template Name: Page Home
 					</ul>
 				</div>
 				<?php $homepage_bg = simple_fields_value("homepage_mobile_bg"); ?>
-				<div class="visible-xs" style="background: url('<?php echo $homepage_bg['url']; ?>'); background-size: cover; height: 100%">
+				<div class="visible-xs" style="background-image: url('<?php echo $homepage_bg['image_src']['owl_thumb-medium'][0]; ?>'); background-size: cover; height: 100%">
 				</div>
 			</div>
 		</section>
@@ -477,10 +481,11 @@ Template Name: Page Home
 				<div class="container">
 					<div class="row">
 						<div class="col-sm-6 col-md-4">
-							<?php echo do_shortcode(simple_fields_value("contact_us")); ?></div>
+							<?php echo do_shortcode(simple_fields_value("contact_us")); ?>
+						</div>
 						<div class="hidden-xs hidden-sm col-md-4 center" style="margin-top: -20px;">
 							<div class="logo-large">
-								<img src="<?php echo get_stylesheet_directory_uri() . '/assets/img/l_large.png'; ?>" alt=""/>
+								<?php echo ot_get_option( 'logo_footer' ) ? '<img src="' . ot_get_option( 'logo_footer' ) . '" alt="Home" />' : bloginfo('name'); ?>
 							</div>
 						</div>
 						<div class="col-sm-6 col-md-4 contact-info">
