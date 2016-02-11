@@ -10,7 +10,6 @@ function roots_setup() {
 	// Register wp_nav_menu() menus
 	// http://codex.wordpress.org/Function_Reference/register_nav_menus
 	register_nav_menus(array(
-		'intro_nav' => 'Homepage Intro Nav',
 		'attraction_map_navigation' => 'Attraction Navigation',
 		'region_map_navigation' => 'Region Navigation',
 		'attraction_map_hover' => 'Attraction Map Hover Navigation',

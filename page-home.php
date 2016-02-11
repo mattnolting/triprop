@@ -15,35 +15,21 @@ Template Name: Page Home
 						<div class="logo">
 							<img src="<?php echo ot_get_option( 'home_intro_logo' ); ?>" alt="Imperial Center" />
 						</div>
-						<?php if (has_nav_menu('intro_nav')) : ?>
-						<div class="intro-nav">
-							<?php wp_nav_menu(array('theme_location' => 'intro_nav', 'menu_class' => 'test')); ?>
 
-						</div>
+						<?php $intro_nav = simple_fields_fieldgroup("homepage_intro_nav"); ?>
+						<?php if($intro_nav) : ?>
+							<div class="intro-nav">
+								<?php $i = 1; ?>
+								<?php foreach($intro_nav as $nav) : ?>
+									<?php $i > 2 ? $x = 'right' : $x = 'left'; ?>
+									<a href="<?php echo $nav['intro_nav_anchor']; ?>" class="ribbon-link">
+										<span class="icon" style="background-image: url('<?php echo $nav['intro_nav_icon']['url']; ?>');"></span>
+										<div class="ribbon ribbon-<?php echo $x; ?>"><?php echo $nav['intro_link']; ?></div>
+									</a>
+									<?php $i++; ?>
+								<?php endforeach; ?>
+							</div>
 						<?php endif; ?>
-
-						<div class="intro-nav">
-							<a href="#properties" class="ribbon-link">
-								<span class="icon icon-building"></span>
-								<div class="ribbon ribbon-left">Buildings</div>
-							</a>
-							<a href="#about" class="ribbon-link">
-								<span class="icon icon-about"></span>
-								<div class="ribbon ribbon-left">About</div>
-							</a>
-							<a href="#amenities" class="ribbon-link">
-								<span class="icon icon-amenity"></span>
-								<div class="ribbon ribbon-right">Amenities</div>
-							</a>
-							<a href="#contact" class="ribbon-link">
-								<span class="icon icon-contact"></span>
-								<div class="ribbon ribbon-right">Contact</div>
-							</a>
-							<a href="#map" class="ribbon-link">
-								<span class="icon icon-map"></span>
-								<div class="ribbon ribbon-right">Map</div>
-							</a>
-						</div>
 					</div>
 				</div>
 			</div>
@@ -70,7 +56,7 @@ Template Name: Page Home
 			</div>
 		</section>
 
-		<section id="about" class="about section">
+		<section id="#<?php echo ot_get_option( 'section_1_anchor' ); ?>" class="<?php echo ot_get_option( 'section_1_anchor' ); ?> ?> section">
 			<div class="section-title">
 				<?php if(ot_get_option( 'section_1_icon' )): ?>
 					<h2 class="with-icon" style="background-image: url('<?php echo ot_get_option( 'section_1_icon' ); ?>')"><?php echo ot_get_option( 'section_1_title' ); ?></h2>
@@ -101,7 +87,7 @@ Template Name: Page Home
 			</div>
 		</section>
 
-		<section id="amenities" class="amenities section">
+		<section id="#<?php echo ot_get_option( 'section_2_anchor' ); ?>" class="<?php echo ot_get_option( 'section_2_anchor' ); ?> ?> section">
 			<div class="section-title">
 				<div class="container">
 					<?php if(ot_get_option( 'section_2_icon' )): ?>
@@ -160,7 +146,7 @@ Template Name: Page Home
 			</div>
 		</section>
 
-		<section id="map" class="map section">
+		<section id="#<?php echo ot_get_option( 'section_3_anchor' ); ?>" class="<?php echo ot_get_option( 'section_3_anchor' ); ?> ?> section">
 			<div class="section-title">
 				<div class="container">
 					<?php if(ot_get_option( 'section_3_icon' )): ?>
@@ -355,7 +341,7 @@ Template Name: Page Home
 			</div>
 		</section>
 
-		<section id="properties" class="properties section">
+		<section id="#<?php echo ot_get_option( 'section_4_anchor' ); ?>" class="<?php echo ot_get_option( 'section_4_anchor' ); ?> ?> section">
 			<div class="section-title">
 				<div class="container">
 					<?php if(ot_get_option( 'section_4_icon' )): ?>
@@ -476,7 +462,7 @@ Template Name: Page Home
 			</div>
 		</section>
 
-		<section id="contact" class="contact section blue">
+		<section id="#<?php echo ot_get_option( 'section_5_anchor' ); ?>" class="<?php echo ot_get_option( 'section_5_anchor' ); ?> ?> section blue">
 			<div class="section-content small">
 				<div class="container">
 					<div class="row">
